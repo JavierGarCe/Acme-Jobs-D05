@@ -1,0 +1,8 @@
+employer.descriptor.form.label.duty.title = Título:
+employer.descriptor.form.label.duty.description = Descripción:
+employer.descriptor.form.label.duty.percentage = Porcentaje:
+employer.duty.form.button.return = Volver
+
+employer.duty.list.label.title = Título
+employer.duty.list.label.description = Descripción
+employer.job.list.button.return = Volver
