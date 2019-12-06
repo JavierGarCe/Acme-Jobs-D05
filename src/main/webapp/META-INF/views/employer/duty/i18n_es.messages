@@ -6,3 +6,5 @@ employer.duty.form.button.return = Volver
 employer.duty.list.label.title = Título
 employer.duty.list.label.description = Descripción
 employer.job.list.button.return = Volver
+
+employer.duty.form.button.create = Crear

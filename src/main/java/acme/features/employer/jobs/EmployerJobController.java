@@ -18,15 +18,19 @@ import acme.framework.controllers.AbstractController;
 public class EmployerJobController extends AbstractController<Employer, Job> {
 
 	@Autowired
-	private EmployerJobListService	listMineService;
+	private EmployerJobListService		listMineService;
 
 	@Autowired
-	private EmployerJobShowService	showService;
+	private EmployerJobShowService		showService;
+
+	@Autowired
+	private EmployerJobCreateService	createService;
 
 
 	@PostConstruct
 	private void initialise() {
 		super.addCustomCommand(CustomCommand.LIST_MINE, BasicCommand.LIST, this.listMineService);
 		super.addBasicCommand(BasicCommand.SHOW, this.showService);
+		super.addBasicCommand(BasicCommand.CREATE, this.createService);
 	}
 }

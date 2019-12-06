@@ -117,6 +117,7 @@ master.menu.consumer.createOffer = Crear nueva oferta
 
 master.menu.employer = Empleador
 master.menu.employer.listMineEmployer = Lista de mis trabajos
+master.menu.employer.creteJob = Crear nuevo trabajo
 master.menu.employer.listMineApplication = Lista de mis aplicaciones
 
 # master.menu.worker  ########################################################

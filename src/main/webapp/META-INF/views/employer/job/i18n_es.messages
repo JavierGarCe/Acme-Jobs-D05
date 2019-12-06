@@ -15,9 +15,17 @@ employer.job.form.label.duty.percentage = Porcentaje:
 employer.job.form.label.status.draft = Borrador
 employer.job.form.label.status.published = Publicado
 employer.job.form.button.return = Volver
+employer.job.button.create = Crear
 
 employer.job.list.label.title = Título
 employer.job.list.label.salary = Salario
 employer.job.list.label.deadline = Fecha límite
 
 master.menu.employer.listAuditRecords = Registro de auditorías
+
+employer.job.error.not-future-deadline = La deadline debe estar en el futuro
+employer.job.error.not-positive-salary = La cantidad del salario debe ser mayor de 0
+employer.job.error.not-EUR-currency = La moneda debe ser EUR
+employer.job.error.not-draft-job = El trabajo se debe crear en modo borrador
+
+employer.job.form.label.create.duty = Añadir tarea
