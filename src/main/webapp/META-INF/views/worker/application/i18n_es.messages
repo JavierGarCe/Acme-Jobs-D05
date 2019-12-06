@@ -12,3 +12,7 @@ worker.application.form.button.return = Volver
 worker.application.list.label.moment = Momento
 worker.application.list.label.status = Estado
 worker.application.list.label.statement = Declaración
+
+worker.application.list.button.status = Agrupar por estado
+worker.application.list.button.creation = Agrupar por momento
+worker.application.list.button.reference = Agrupar por referencia

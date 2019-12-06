@@ -14,3 +14,6 @@ employer.application.form.button.return = Return
 employer.application.list.label.moment = Moment
 employer.application.list.label.status = Status
 employer.application.list.label.statement = Statement
+employer.application.list.button.status = Group by status
+employer.application.list.button.creation = Group by creation moment
+employer.application.list.button.reference = Group by reference
