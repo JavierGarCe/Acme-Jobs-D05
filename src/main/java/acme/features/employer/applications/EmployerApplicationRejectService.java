@@ -4,16 +4,18 @@ package acme.features.employer.applications;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import acme.datatypes.ApplicationStatus;
 import acme.entities.applications.Application;
 import acme.entities.jobs.Job;
 import acme.entities.roles.Employer;
+import acme.framework.components.Errors;
 import acme.framework.components.Model;
 import acme.framework.components.Request;
 import acme.framework.entities.Principal;
-import acme.framework.services.AbstractShowService;
+import acme.framework.services.AbstractUpdateService;
 
 @Service
-public class EmployerApplicationShowService implements AbstractShowService<Employer, Application> {
+public class EmployerApplicationRejectService implements AbstractUpdateService<Employer, Application> {
 
 	@Autowired
 	private EmployerApplicationRepository repository;
@@ -22,7 +24,6 @@ public class EmployerApplicationShowService implements AbstractShowService<Emplo
 	@Override
 	public boolean authorise(final Request<Application> request) {
 		assert request != null;
-
 		boolean result;
 		int applicationId;
 		Application application;
@@ -37,7 +38,17 @@ public class EmployerApplicationShowService implements AbstractShowService<Emplo
 		principal = request.getPrincipal();
 		result = employer.getUserAccount().getId() == principal.getAccountId();
 
-		return result;
+		return result && application.getStatus() == ApplicationStatus.PENDING;
+	}
+
+	@Override
+	public void bind(final Request<Application> request, final Application entity, final Errors errors) {
+		assert request != null;
+		assert entity != null;
+		assert errors != null;
+
+		request.bind(entity, errors);
+
 	}
 
 	@Override
@@ -46,8 +57,7 @@ public class EmployerApplicationShowService implements AbstractShowService<Emplo
 		assert entity != null;
 		assert model != null;
 
-		request.unbind(entity, model, "reference", "moment", "status", "statement", "reference", "skills", "qualifications", "job.title", "justification");
-		model.setAttribute("idJob", this.repository.findId(entity.getId()));
+		request.unbind(entity, model, "status", "justification");
 
 	}
 
@@ -55,13 +65,36 @@ public class EmployerApplicationShowService implements AbstractShowService<Emplo
 	public Application findOne(final Request<Application> request) {
 		assert request != null;
 
-		Application res;
+		Application result;
 		int id;
 
 		id = request.getModel().getInteger("id");
-		res = this.repository.findOneById(id);
 
-		return res;
+		result = this.repository.findOneById(id);
+
+		return result;
+	}
+
+	@Override
+	public void validate(final Request<Application> request, final Application entity, final Errors errors) {
+		assert request != null;
+		assert entity != null;
+		assert errors != null;
+		if (!errors.hasErrors("justification")) {
+			Boolean isFilled = !entity.getJustification().equals("");
+			errors.state(request, isFilled, "justification", "employer.justification.error.notblank");
+		}
+
+	}
+
+	@Override
+	public void update(final Request<Application> request, final Application entity) {
+		assert request != null;
+		assert entity != null;
+
+		entity.setStatus(ApplicationStatus.REJECTED);
+		this.repository.save(entity);
+
 	}
 
 }
