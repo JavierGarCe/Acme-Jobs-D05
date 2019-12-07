@@ -124,6 +124,7 @@ master.menu.employer.listMineApplication = List my applications
 # master.menu.worker  ########################################################
 master.menu.worker = Worker
 master.menu.worker.listMineApplication = List my applications
+master.menu.worker.listNonAppliedJobs = List non applied jobs
 
 # master.menu.sponsor #########################################################
 

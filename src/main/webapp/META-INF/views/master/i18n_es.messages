@@ -123,6 +123,7 @@ master.menu.employer.listMineApplication = Lista de mis aplicaciones
 # master.menu.worker  ########################################################
 master.menu.worker = Trabajador
 master.menu.worker.listMineApplication = Lista de mis aplicaciones
+master.menu.worker.listNonAppliedJobs = Lista de trabajos no aplicados
 
 # master.menu.sponsor #########################################################
 

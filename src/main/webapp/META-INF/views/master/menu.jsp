@@ -135,7 +135,7 @@
 
 		<acme:menu-option code="master.menu.worker" access="hasRole('Worker')">
 			<acme:menu-suboption code="master.menu.worker.listMineApplication" action="/worker/application/list-mine" />
-
+			<acme:menu-suboption code="master.menu.worker.listNonAppliedJobs" action="/worker/job/list-non-applied" />
 		</acme:menu-option>
 
 
