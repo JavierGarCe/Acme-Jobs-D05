@@ -9,27 +9,40 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.datatypes.Status;
-import acme.entities.jobs.Descriptor;
+import acme.entities.customization.Customization;
 import acme.entities.jobs.Job;
 import acme.entities.roles.Employer;
 import acme.framework.components.Errors;
 import acme.framework.components.Model;
 import acme.framework.components.Request;
 import acme.framework.datatypes.Money;
-import acme.framework.services.AbstractCreateService;
+import acme.framework.entities.Principal;
+import acme.framework.services.AbstractUpdateService;
 
 @Service
-public class EmployerJobCreateService implements AbstractCreateService<Employer, Job> {
+public class EmployerJobUpdateService implements AbstractUpdateService<Employer, Job> {
 
 	@Autowired
-	private EmployerJobRepository repository;
+	EmployerJobRepository repository;
 
 
 	@Override
 	public boolean authorise(final Request<Job> request) {
 		assert request != null;
 
-		return true;
+		boolean result;
+		int jobId;
+		Job job;
+		Employer employer;
+		Principal principal;
+
+		jobId = request.getModel().getInteger("id");
+		job = this.repository.findOneById(jobId);
+		employer = job.getEmployer();
+		principal = request.getPrincipal();
+		result = employer.getUserAccount().getId() == principal.getAccountId() && job.getStatus().equals(Status.DRAFT);
+
+		return result;
 	}
 
 	@Override
@@ -38,7 +51,7 @@ public class EmployerJobCreateService implements AbstractCreateService<Employer,
 		assert entity != null;
 		assert errors != null;
 
-		request.bind(entity, errors); //propiedades excluidas??
+		request.bind(entity, errors);
 	}
 
 	@Override
@@ -51,15 +64,15 @@ public class EmployerJobCreateService implements AbstractCreateService<Employer,
 	}
 
 	@Override
-	public Job instantiate(final Request<Job> request) {
+	public Job findOne(final Request<Job> request) {
+		assert request != null;
+
 		Job result;
-		Descriptor descriptor;
-		Employer employer;
-		result = new Job();
-		descriptor = new Descriptor();
-		employer = this.repository.findEmployerById(request.getPrincipal().getActiveRoleId());
-		result.setDescriptor(descriptor);
-		result.setEmployer(employer);
+		int id;
+
+		id = request.getModel().getInteger("id");
+		result = this.repository.findOneById(id);
+
 		return result;
 	}
 
@@ -71,8 +84,8 @@ public class EmployerJobCreateService implements AbstractCreateService<Employer,
 
 		Calendar calendar;
 		Date present;
-
-		boolean isDuplicated = this.repository.findOneByReference(entity.getReference()) != null;
+		Job jobByReference = this.repository.findOneByReference(entity.getReference());
+		boolean isDuplicated = jobByReference != null && entity.getId() != jobByReference.getId();
 		errors.state(request, !isDuplicated, "reference", "employer.reference.error.duplicated");
 
 		if (!errors.hasErrors("deadline")) {
@@ -89,19 +102,35 @@ public class EmployerJobCreateService implements AbstractCreateService<Employer,
 			errors.state(request, isEUR, "salary", "employer.job.error.not-EUR-currency");
 		}
 		Status status = entity.getStatus();
-		if (!errors.hasErrors("status")) {
-			boolean isDraft = status.equals(Status.DRAFT);
-			errors.state(request, isDraft, "status", "employer.job.error.not-draft-job");
+		if (!errors.hasErrors("status") && status.equals(Status.PUBLISHED)) {
+			boolean fullWorkload = this.repository.countPercentage(entity.getId()) == 100.0;
+			errors.state(request, fullWorkload, "status", "employer.job.error.non-fullWorkload-job");
+
+			if (!errors.hasErrors("descriptor.description")) {
+				String description = entity.getDescriptor().getDescription();
+				Customization customization = this.repository.getCustomization();
+				String[] spamwords = customization.getSpamword().toLowerCase().split(", ");
+				int i = description.length();
+				int b = 0;
+				for (String spamword : spamwords) {
+					b = b + i - entity.getDescriptor().getDescription().toLowerCase().replace(spamword, "").length();
+				}
+				boolean isSpam = b * 100 / i >= customization.getThreshold();
+				errors.state(request, !isSpam, "descriptor.description", "employer.job.error.spam-job");
+
+			}
 		}
+
 	}
 
 	@Override
-	public void create(final Request<Job> request, final Job entity) {
+	public void update(final Request<Job> request, final Job entity) {
 		assert request != null;
 		assert entity != null;
 		entity.getDescriptor().setDescription(request.getModel().getString("descriptor.description"));
 		this.repository.save(entity.getDescriptor());
 		this.repository.save(entity);
+
 	}
 
 }
