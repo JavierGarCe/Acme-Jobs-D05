@@ -27,7 +27,7 @@ master.menu.employer.listAuditRecords = Registro de auditorías
 master.menu.employer.notUpdate = Este trabajo no se puede actualizar porque está guardado en modo publicado.
 master.menu.employer.notDelete = Este trabajo no se puede eliminar porque uno o más trabajadores lo han solicitado.
 
-employer.job.error.spam-job = Este trabajo se considera spam y no se puede guardar en modo publicado
+employer.job.error.spam-job = {1} se considera spam y no se puede guardar en modo publicado
 employer.reference.error.duplicated = La referencia debe ser única
 employer.job.error.not-future-deadline = La fecha límite debe estar en el futuro
 employer.job.error.not-positive-salary = La cantidad del salario debe ser mayor de 0

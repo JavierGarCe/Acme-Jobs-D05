@@ -116,7 +116,21 @@ public class EmployerJobUpdateService implements AbstractUpdateService<Employer,
 					b = b + i - entity.getDescriptor().getDescription().toLowerCase().replace(spamword, "").length();
 				}
 				boolean isSpam = b * 100 / i >= customization.getThreshold();
-				errors.state(request, !isSpam, "descriptor.description", "employer.job.error.spam-job");
+				errors.state(request, !isSpam, "descriptor.description", "employer.job.error.spam-job", "description", "Esta descripción");
+
+			}
+
+			if (!errors.hasErrors("title")) {
+				String title = entity.getTitle();
+				Customization customization = this.repository.getCustomization();
+				String[] spamwords = customization.getSpamword().toLowerCase().split(", ");
+				int i = title.length();
+				int b = 0;
+				for (String spamword : spamwords) {
+					b = b + i - entity.getTitle().toLowerCase().replace(spamword, "").length();
+				}
+				boolean isSpam = b * 100 / i >= customization.getThreshold();
+				errors.state(request, !isSpam, "title", "employer.job.error.spam-job", "title", "Este título");
 
 			}
 		}

@@ -27,7 +27,7 @@ master.menu.employer.listAuditRecords = Audit records
 master.menu.employer.notUpdate = This job can't be update because it's saved in published mode.
 master.menu.employer.notDelete = This job can't be deleted because one or more workers has applied for it.
 
-employer.job.error.spam-job = This job is considered spam and cannot be saved in published mode
+employer.job.error.spam-job = This {0} is considered spam and cannot be saved in published mode
 employer.reference.error.duplicated = The reference must be unique
 employer.job.error.not-future-deadline = Deadline must be in future
 employer.job.error.not-positive-salary = Salary amount must be greater than zero
