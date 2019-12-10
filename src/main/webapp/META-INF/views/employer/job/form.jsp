@@ -40,10 +40,19 @@
 		<acme:form-textarea code="employer.job.form.label.descriptor.description" path="descriptor.description" />
 	</acme:form-panel>
 
-
-	
 <!--  	<acme:form-submit test="${command == 'show' }" code="master.menu.employer.listAuditRecords" action="/employer/auditRecord/list-mine?id=${param.id}" method="get"/>-->
 <!-- <acme:form-submit test="${command == 'show'}" code="employer.job.form.label.descriptorMessage" action="/employer/duty/list?jobId=${id}" method="get" />-->
+	<div class="collapse" id="alertUpdate">
+ 	 <div class="alert alert-danger">
+ 		<acme:message code="master.menu.employer.notUpdate"/>
+	</div>
+	</div>
+	
+	<div class="collapse" id="alertDelete">
+ 	 <div class="alert alert-danger">
+ 		<acme:message code="master.menu.employer.notDelete"/>
+	</div>
+	</div>
 	
 	<jstl:if test="${command == 'show' }">
  	<button type="button" onclick="javascript: pushReturnUrl('/employer/job/show?id=${id}'); redirect('/employer/auditRecord/list-mine?id=${param.id}')" class="btn btn-primary">
@@ -53,14 +62,35 @@
 	<button  type="button" onclick="javascript: pushReturnUrl('/employer/job/show?id=${id}'); redirect('/employer/duty/list?jobId=${id}')" class="btn btn-primary">
 		<acme:message code="employer.job.form.label.descriptorMessage" />
 	</button>
+	
+	<jstl:if test="${status == 'DRAFT' }">
+	<acme:form-submit code="employer.job.button.update" action="/employer/job/update"/>
+	</jstl:if>
+
+	<jstl:if test="${status == 'PUBLISHED' }">
+ 	<button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#alertUpdate" aria-expanded="false" aria-controls="collapseExample">
+  		<acme:message code="employer.job.button.update"/>
+  	</button>
+  	</jstl:if>
+  	
+  	<jstl:if test="${hasApplications == 'false' }">
+	<acme:form-submit code="employer.job.button.delete" action="/employer/job/delete"/>
+	</jstl:if>
+
+	<jstl:if test="${hasApplications == 'true'}">
+ 	<button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#alertDelete" aria-expanded="false" aria-controls="collapseExample">
+  		<acme:message code="employer.job.button.delete"/>
+  	</button>
+	</jstl:if>
+	
 	</jstl:if>
 	<acme:form-submit test="${command == 'create'}" code="employer.job.button.create" action="/employer/job/create" />
-	<acme:form-submit test="${command == 'show' && status == 'DRAFT'}" code="employer.job.button.update" action="/employer/job/update"/>
+	<!--<acme:form-submit test="${command == 'show' && status == 'DRAFT'}" code="employer.job.button.update" action="/employer/job/update"/>
 	<acme:form-submit test="${command == 'show' && hasApplications == 'false'}" code="employer.job.button.delete" action="/employer/job/delete" />	
+	-->
 	<acme:form-submit test="${command == 'update'}" code="employer.job.button.update" action="/employer/job/update" />
 	<acme:form-submit test="${command == 'delete'}" code="employer.job.button.delete" action="/employer/job/delete" />	
 	<acme:form-return code="employer.job.form.button.return"/>
-
-
+	
 
 </acme:form>
