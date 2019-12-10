@@ -10,9 +10,12 @@ auditor.job.form.label.descriptor.duties = Duties:
 auditor.job.form.label.status.draft = Draft
 auditor.job.form.label.status.published = Published
 auditor.job.form.button.return = Return
+auditor.auditRecord.form.button.update = Update
+auditor.auditRecord.form.button.create = Create
 
 auditor.job.list.label.title = Title
 auditor.job.list.label.salary = Salary
 auditor.job.list.label.deadline = Deadline
 master.menu.anonymous.listAuditRecords = Audit records
+master.menu.anonymous.createAuditRecord = Create Audit Record
 employer.job.form.label.descriptorMessage = Watch duties
