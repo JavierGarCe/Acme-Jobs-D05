@@ -3,7 +3,7 @@
 <%@taglib prefix="jstl" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="acme" tagdir="/WEB-INF/tags"%>
 
-<acme:form>
+<acme:form readonly="${hasAccess}">
 <input name="jobId" id="jobId" type="hidden" value="${param.jobId}"/>
 	<acme:form-textbox code="auditor.auditRecord.form.label.title" path="title"/>
 	<jstl:if test="${command != 'create'}">
@@ -32,7 +32,7 @@
 		<acme:form-textarea code="auditor.auditRecord.form.label.body" path="body"/>
   	
   	<acme:form-return code="auditor.auditRecord.form.button.return"/>
-  	<acme:form-submit test="${command == 'show' }" code="auditor.auditRecord.form.button.update"
+  	<acme:form-submit test="${command == 'show' and hasAccess == false }" code="auditor.auditRecord.form.button.update"
 	action="/auditor/auditRecord/update"/>
 	<acme:form-submit test="${command == 'create' }" code="auditor.auditRecord.form.button.create"
 	action="/auditor/auditRecord/create"/>
