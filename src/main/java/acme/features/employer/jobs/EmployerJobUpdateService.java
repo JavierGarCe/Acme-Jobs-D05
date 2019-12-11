@@ -103,7 +103,11 @@ public class EmployerJobUpdateService implements AbstractUpdateService<Employer,
 		}
 		Status status = entity.getStatus();
 		if (!errors.hasErrors("status") && status.equals(Status.PUBLISHED)) {
-			boolean fullWorkload = this.repository.countPercentage(entity.getId()) == 100.0;
+			double percentage = 0.;
+			if (this.repository.countPercentage(entity.getId()) != null) {
+				percentage = this.repository.countPercentage(entity.getId());
+			}
+			boolean fullWorkload = percentage == 100.0;
 			errors.state(request, fullWorkload, "status", "employer.job.error.non-fullWorkload-job");
 
 			if (!errors.hasErrors("descriptor.description")) {

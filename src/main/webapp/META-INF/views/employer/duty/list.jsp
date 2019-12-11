@@ -19,7 +19,7 @@
 </acme:list>
 <jstl:set var= "a" value="statusDraft[0]"/>
 <jstl:set var="status" value="${requestScope[a]}"/>
-<jstl:if test="${status == 'true'}">
+<jstl:if test="${status == 'true' || status == null}">
  	<button type="button" onclick="javascript: pushReturnUrl('/employer/duty/list?jobId=${param.jobId}'); redirect('/employer/duty/create?jobId=${param.jobId}')" class="btn btn-primary">
 		<acme:message code="employer.job.list.label.create.duty" />
 	</button> 
