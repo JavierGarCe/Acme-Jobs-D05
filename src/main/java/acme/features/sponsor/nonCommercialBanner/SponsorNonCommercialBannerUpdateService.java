@@ -68,15 +68,15 @@ public class SponsorNonCommercialBannerUpdateService implements AbstractUpdateSe
 		assert errors != null;
 
 		Customization customization = this.repository.findCustomization();
-		String[] spamWords = customization.getSpamword().toLowerCase().replaceAll("\\s", "").split(",");
+		String[] spamWords = customization.getSpamword().toLowerCase().split(",");
 		Double threshold = customization.getThreshold();
 
 		if (!errors.hasErrors("picture")) {
-			String picture = entity.getPicture().toLowerCase().replaceAll("\\s", "");
+			String picture = entity.getPicture().toLowerCase();
 			Double numberLetters = new Double(picture.length());
 			Double numberSpamWordsInLetters = 0.0;
 			for (String s : spamWords) {
-				if (picture.contains(s)) {
+				if (picture.contains(s.trim())) {
 					numberSpamWordsInLetters += s.length();
 				}
 			}
@@ -86,11 +86,11 @@ public class SponsorNonCommercialBannerUpdateService implements AbstractUpdateSe
 		}
 
 		if (!errors.hasErrors("slogan")) {
-			String slogan = entity.getSlogan().toLowerCase().replaceAll("\\s", "");
+			String slogan = entity.getSlogan().toLowerCase();
 			Double numberLetters = new Double(slogan.length());
 			Double numberSpamWordsInLetters = 0.0;
 			for (String s : spamWords) {
-				if (slogan.contains(s)) {
+				if (slogan.contains(s.trim())) {
 					numberSpamWordsInLetters += s.length();
 				}
 			}
@@ -100,11 +100,11 @@ public class SponsorNonCommercialBannerUpdateService implements AbstractUpdateSe
 		}
 
 		if (!errors.hasErrors("jingle") && !entity.getJingle().isEmpty()) {
-			String jingle = entity.getJingle().toLowerCase().replaceAll("\\s", "");
+			String jingle = entity.getJingle().toLowerCase();
 			Double numberLetters = new Double(jingle.length());
 			Double numberSpamWordsInLetters = 0.0;
 			for (String s : spamWords) {
-				if (jingle.contains(s)) {
+				if (jingle.contains(s.trim())) {
 					numberSpamWordsInLetters += s.length();
 				}
 			}
