@@ -840,7 +840,7 @@
 		<property name="worker" ref="worker1Worker"/>
 		<property name="job" ref="job02"/>
 	</bean>
-	
+
 	<bean id="application2" class="acme.entities.applications.Application">
 		<property name="reference" value="EEEE-JJJN:WWWX"/>
 		<property name="moment" value="2019/10/09 15:00"/>
@@ -851,7 +851,17 @@
 		<property name="worker" ref="worker2Worker"/>
 		<property name="job" ref="job05"/>
 	</bean>
-	
+		<bean id="application4" class="acme.entities.applications.Application">
+		<property name="reference" value="EEEE-JJJZ:WWWX"/>
+		<property name="moment" value="2019/10/08 15:00"/>
+		<property name="status" value="PENDING"></property>
+		<property name="statement" value="Gestionar base de datos2"/>
+		<property name="skills" value="Responsability and Determination2"/>
+		<property name="qualifications" value="Gestion de Bases de Datos (N3) and Gestion de Equipos Informáticos (N3)" />
+		<property name="worker" ref="worker2Worker"/>
+		<property name="job" ref="job05"/>
+
+	</bean>
 		<bean id="application3" class="acme.entities.applications.Application">
 		<property name="reference" value="EEEE-JJJM:WWWX"/>
 		<property name="moment" value="2019/11/24 18:00"/>

@@ -13,3 +13,7 @@ employer.application.form.button.createApplication = Create application
 worker.application.list.label.moment = Moment
 worker.application.list.label.status = Status
 worker.application.list.label.statement = Statement
+
+worker.application.list.button.status = Group by status
+worker.application.list.button.creation = Group by creation moment
+worker.application.list.button.reference = Group by reference

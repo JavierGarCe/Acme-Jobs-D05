@@ -19,3 +19,12 @@
 	<acme:list-column code="employer.application.list.label.status" path="status" width="20%"/>
 	<acme:list-column code="employer.application.list.label.statement" path="statement" width="40%"/>
 </acme:list>
+	<button type="button" onclick="javascript: pushReturnUrl('/employer/application/list-mine?group='); redirect('/employer/application/list-mine?group=creation')" class="btn btn-primary">
+		<acme:message code="employer.application.list.button.creation" />
+	</button>
+	<button type="button" onclick="javascript: pushReturnUrl('/employer/application/list-mine?group='); redirect('/employer/application/list-mine?group=reference')" class="btn btn-primary">
+		<acme:message code="employer.application.list.button.reference" />
+	</button>
+	<button type="button" onclick="javascript: pushReturnUrl('/employer/application/list-mine?group='); redirect('/employer/application/list-mine?group=status')" class="btn btn-primary">
+		<acme:message code="employer.application.list.button.status" />
+	</button>
