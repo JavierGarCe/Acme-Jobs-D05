@@ -70,7 +70,9 @@
 			<acme:menu-suboption code="master.menu.administrator.user-accounts" action="/administrator/user-account/list"/>
 			<acme:menu-separator/>
 			<acme:menu-suboption code="master.menu.administrator.shutdown" action="/master/shutdown"/>
-      <acme:menu-separator/>
+     		<acme:menu-separator/>
+     			<acme:menu-suboption code="master.menu.administrator.request.auditor" action="/administrator/request-auditor/list"/>
+			<acme:menu-separator/>
       		<acme:menu-suboption code="master.menu.administrator.createAnnouncements" action="/administrator/announcement/create"/>
 			<acme:menu-suboption code="master.menu.administrator.listAnnouncements" action="/administrator/announcement/list"/>
 		<acme:menu-separator/>
@@ -165,6 +167,10 @@
 				access="!hasRole('Worker')" />
 			<acme:menu-suboption code="master.menu.user-account.worker" action="/authenticated/worker/update"
 				access="hasRole('Worker')" />
+			<acme:menu-suboption code="master.menu.user-account.become-auditor" action="/authenticated/request-auditor/create"
+				access="!hasRole('Auditor')" />
+			<acme:menu-suboption code="master.menu.user-account.auditor" action="/authenticated/auditor/update"
+				access="hasRole('Auditor')" />
 			<acme:menu-suboption code="master.menu.user-account.become-sponsor" action="/authenticated/sponsor/create"
 				access="!hasRole('Worker')" />
 			<acme:menu-suboption code="master.menu.user-account.sponsor" action="/authenticated/sponsor/update"

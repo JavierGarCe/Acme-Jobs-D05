@@ -26,6 +26,7 @@
     create table `application` (
        `id` integer not null,
         `version` integer not null,
+        `justification` varchar(255),
         `moment` datetime(6),
         `qualifications` varchar(255),
         `reference` varchar(255),
@@ -257,6 +258,15 @@
         primary key (`id`)
     ) engine=InnoDB;
 
+    create table `request_auditor` (
+       `id` integer not null,
+        `version` integer not null,
+        `firm` varchar(255),
+        `responsability_statement` varchar(255),
+        `authenticated_id` integer not null,
+        primary key (`id`)
+    ) engine=InnoDB;
+
     create table `requests` (
        `id` integer not null,
         `version` integer not null,
@@ -355,6 +365,7 @@ create index IDXnhikaa2dj3la6o2o7e9vo01y0 on `announcement` (`moment`);
 
     alter table `application` 
        add constraint UK_ct7r18vvxl5g4c4k7aefpa4do unique (`reference`);
+create index IDXof878cqun8l1ynh0ao94bw3au on `audit_record` (`status`);
 create index IDXnr284tes3x8hnd3h716tmb3fr on `challenge` (`deadline`);
 create index IDX9pkce3d1y6w47wadap5s5xptc on `company_record` (`stars`);
 
@@ -362,6 +373,7 @@ create index IDX9pkce3d1y6w47wadap5s5xptc on `company_record` (`stars`);
        add constraint UK_kvr5rclgwa51d625rmx13ke96 unique (`duties_id`);
 create index IDXk2t3uthe649ao1jllcuks0gv4 on `investor_record` (`stars`);
 create index IDXfdmpnr8o4phmk81sqsano16r on `job` (`deadline`);
+create index IDX28ur9xm72oo1df9g14xhnh8h3 on `job` (`status`);
 
     alter table `job` 
        add constraint UK_qpodqtu8nvqkof3olnqnqcv2l unique (`descriptor_id`);
@@ -373,6 +385,9 @@ create index IDXcp4664f36sgqsd0ihmirt0w0 on `offer` (`ticker`);
 
     alter table `offer` 
        add constraint UK_iex7e8fs0fh89yxpcnm1orjkm unique (`ticker`);
+
+    alter table `request_auditor` 
+       add constraint UK_ei3fu6x562eyti7w3e0lsu522 unique (`authenticated_id`);
 create index IDXmly5kwrpgadjkxv5t5dgw36hr on `requests` (`deadline`);
 create index IDX2ijmvvrwi2t1isu2m2ncm5qn1 on `requests` (`ticker`);
 
@@ -474,6 +489,11 @@ create index IDX2ijmvvrwi2t1isu2m2ncm5qn1 on `requests` (`ticker`);
        add constraint FK_b1gwnjqm6ggy9yuiqm0o4rlmd 
        foreign key (`user_account_id`) 
        references `user_account` (`id`);
+
+    alter table `request_auditor` 
+       add constraint `FK9giuqpn53mab8yca7a3noeckl` 
+       foreign key (`authenticated_id`) 
+       references `authenticated` (`id`);
 
     alter table `sponsor` 
        add constraint FK_20xk0ev32hlg96kqynl6laie2 
