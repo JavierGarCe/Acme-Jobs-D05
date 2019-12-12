@@ -1,5 +1,5 @@
 <%--
-- form.jsp
+- list.jsp
 -
 - Copyright (c) 2019 Rafael Corchuelo.
 -
@@ -9,19 +9,13 @@
 - purposes.  The copyright owner does not offer any warranties or representations, nor do
 - they accept any liabilities with respect to them.
 --%>
-
 <%@page language="java"%>
 
 <%@taglib prefix="jstl" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="acme" tagdir="/WEB-INF/tags"%>
 
-<acme:form>
-
-	<input id="jobId" name="jobId" type="hidden" value="${param.jobId}"/>
-	<acme:form-textbox code="employer.descriptor.form.label.duty.title" path="title" />
-	<acme:form-textarea code="employer.descriptor.form.label.duty.description" path="description" />
-	<acme:form-double code="employer.descriptor.form.label.duty.percentage" path="percentage" />
-	<acme:form-submit test="${command == 'create'}" code="employer.duty.form.button.create" action="/employer/duty/create"/>
-	<acme:form-return code="employer.duty.form.button.return"/>
-
-</acme:form>
+<acme:list>
+	<acme:list-column code="worker.job.list.label.title" path="title" width="20%"/>
+	<acme:list-column code="worker.job.list.label.salary" path="salary" width="20%"/>
+	<acme:list-column code="worker.job.list.label.deadline" path="deadline" width="20%"/>
+</acme:list>

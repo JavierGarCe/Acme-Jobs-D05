@@ -1,11 +1,14 @@
 
 package acme.features.worker.auditRecord;
 
+import java.util.Date;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.datatypes.Status;
 import acme.entities.auditRecords.AuditRecord;
+import acme.entities.jobs.Job;
 import acme.entities.roles.Worker;
 import acme.framework.components.Model;
 import acme.framework.components.Request;
@@ -24,12 +27,14 @@ public class WorkerAuditRecordShowService implements AbstractShowService<Worker,
 		assert request != null;
 		Integer AuditRecordId = request.getModel().getInteger("id");
 		AuditRecord aud = this.repository.findOneAuditRecordById(AuditRecordId);
-		assert aud != null;
 		Integer jobId = this.repository.findJobIdByAuditorRecordId(AuditRecordId);
-		assert jobId != null;
 		Principal principal = request.getPrincipal();
+		Job job = this.repository.findJobById(jobId);
+		Date nowDate = new Date(System.currentTimeMillis());
 
-		return aud.getStatus().equals(Status.PUBLISHED) && this.repository.findNumberApplicationsByJobId(jobId, principal.getActiveRoleId()) > 0; //el worker debe haber hecho al menos una application al trabajo en cuestion para ver sus audit records
+		boolean jobIsActive = job.getDeadline().after(nowDate) && job.getStatus().equals(Status.PUBLISHED);
+
+		return aud.getStatus().equals(Status.PUBLISHED) && (jobIsActive || this.repository.findNumberApplicationsByJobId(jobId, principal.getActiveRoleId()) > 0); //el worker debe haber hecho al menos una application al trabajo en cuestion para ver sus audit records o bien el trabajo está activo
 	}
 
 	@Override
