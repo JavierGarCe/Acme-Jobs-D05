@@ -101,6 +101,7 @@ master.menu.administrator.listAllInvestorRecords = List all investor records
 
 master.menu.administrator.createInvestorRecords = Create investor record
 
+master.menu.administrator.request.auditor = List auditor requests
 
 master.menu.administrator.chart = Charts
 
@@ -124,6 +125,7 @@ master.menu.employer.listMineApplication = List my applications
 # master.menu.worker  ########################################################
 master.menu.worker = Worker
 master.menu.worker.listMineApplication = List my applications
+master.menu.worker.listNonAppliedJobs = List non applied jobs
 
 # master.menu.sponsor #########################################################
 
@@ -131,7 +133,8 @@ master.menu.sponsor = Sponsor
 master.menu.sponsor.listMineCommercialBanners = List my commercial banners
 master.menu.sponsor.listMineNonCommercialBanners = List my non commercial banners
 master.menu.sponsor.createCommercialBanners = Create commercial banner
-master.menu.sponsor.createNonCommercialBanners = Create non commercial banner
+master.menu.sponsor.nonCommercialBanners.create = Create non commercial banner
+
 
 # master.menu.auditor #########################################################
 
@@ -148,6 +151,14 @@ master.menu.user-account.become-provider = Become a provider
 master.menu.user-account.consumer = Consumer data
 master.menu.user-account.become-consumer = Become a consumer
 master.menu.user-account.listCompanyRecords = List company records
+master.menu.user-account.become-employer = Become a employer
+master.menu.user-account.employer = Employer data
+master.menu.user-account.become-worker = Become a worker
+master.menu.user-account.become-sponsor = Become a sponsor
+master.menu.user-account.worker = Worker data
+master.menu.user-account.auditor = Auditor data
+master.menu.user-account.become-auditor = Request to become an auditor
+master.menu.user-account.sponsor = Sponsor data
 
 # master.footer ###############################################################
 

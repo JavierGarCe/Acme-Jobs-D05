@@ -294,3 +294,4 @@ at org.springframework.data.jpa.repository.query.SimpleJpaQuery.validateQuery(Si
 at org.hibernate.internal.ExceptionConverterImpl.convert(ExceptionConverterImpl.java:138): org.hibernate.QueryException: could not resolve property: job of: acme.entities.jobs.Job [select jo from acme.entities.jobs.Job jo join jo.job aj where aj.id= ?1]
 at org.hibernate.QueryException.generateQueryException(QueryException.java:120): could not resolve property: job of: acme.entities.jobs.Job [select jo from acme.entities.jobs.Job jo join jo.job aj where aj.id= ?1]
 at org.hibernate.persister.entity.AbstractPropertyMapping.propertyException(AbstractPropertyMapping.java:73): could not resolve property: job of: acme.entities.jobs.Job
+DEBUG [org.hibernate.validator.messageinterpolation.ResourceBundleMessageInterpolator] Loaded expression factory via original TCCL

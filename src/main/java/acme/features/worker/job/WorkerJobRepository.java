@@ -1,6 +1,8 @@
 
 package acme.features.worker.job;
 
+import java.util.Collection;
+
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
@@ -15,4 +17,7 @@ public interface WorkerJobRepository extends AbstractRepository {
 
 	@Query("select count(a) from Application a where a.job.id = ?1 and a.worker.id=?2")
 	int findNumberApplicationsByJobId(int id1, int id2);
+
+	@Query("select j from Job j where j not in (select a.job from Application a where a.worker.id = ?1) and j.deadline > CURRENT_TIMESTAMP and j.status = 1")
+	Collection<Job> findNonAppliedActiveJobs(int workerId);
 }

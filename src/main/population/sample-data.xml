@@ -417,7 +417,6 @@
 	</bean>
 	<bean name="sponsor2Sponsor" class="acme.entities.roles.Sponsor">
 		<property name="organisationName" value="FaKeOrganisation"/>
-		<property name="creditCard" value="6011412594170202"/>
 		<property name="userAccount" ref="sponsor2UserAccount" />
 	</bean>	
 	<bean name="sponsor2Authenticated" class="acme.framework.entities.Authenticated">

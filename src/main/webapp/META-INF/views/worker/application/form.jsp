@@ -15,9 +15,13 @@
 <%@taglib prefix="jstl" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="acme" tagdir="/WEB-INF/tags"%>
 
-<acme:form readonly="true">
+<acme:form>
+	<input name="jobId" id="jobId" type="hidden" value="${param.jobId}"/>
 	<acme:form-textbox code="worker.application.form.label.reference" path="reference" placeholder="EEEE-JJJJ:WWWW"/>
-	<acme:form-moment code="worker.application.form.label.moment" path="moment" />
+	<jstl:if test="${command != 'create' }">
+	<acme:form-moment code="worker.application.form.label.moment" path="moment" readonly="true"/>
+	</jstl:if>
+	<jstl:if test="${command != 'create' }">
 	<acme:form-select code="worker.application.form.label.status" path="status" >
 		<jstl:choose>
 			<jstl:when test="${status == 'PENDING' }"> <jstl:set var="pendingSelected" value="true"/> </jstl:when>
@@ -35,14 +39,13 @@
 		<acme:form-option code="worker.application.form.label.status.rejected" value="REJECTED" selected="${rejectedSelected}" />
 		<acme:form-option code="worker.application.form.label.status.accepted" value="ACCEPTED" selected="${acceptedSelected}" />
 	</acme:form-select>
+	</jstl:if>
 	<acme:form-textarea code="worker.application.form.label.statement" path="statement" />
 	<acme:form-textarea code="worker.application.form.label.skills" path="skills" />
 	<acme:form-textarea code="worker.application.form.label.qualifications" path="qualifications" />
 
-	<button type="button" class="btn btn-primary"
-		onclick="javascript: pushReturnUrl('/worker/application/show?id=${id}'); redirect('/worker/job/show?id=${idJob}')">
-		<acme:message code="employer.application.form.button.job" />
-	</button>
+	<acme:form-submit test="${command == 'show' }" code="employer.application.form.button.job" action="/worker/job/show?id=${idJob}" method="get"/>
+	<acme:form-submit test="${command == 'create' }" code="employer.application.form.button.createApplication" action="/worker/application/create"/>
 
 	<acme:form-return code="worker.application.form.button.return" />
 	

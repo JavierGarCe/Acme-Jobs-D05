@@ -1,9 +1,12 @@
 
 package acme.features.worker.job;
 
+import java.util.Date;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import acme.datatypes.Status;
 import acme.entities.jobs.Job;
 import acme.entities.roles.Worker;
 import acme.framework.components.Model;
@@ -26,9 +29,11 @@ public class WorkerJobShowService implements AbstractShowService<Worker, Job> {
 		Principal principal;
 
 		jobId = request.getModel().getInteger("id");
+		Job job = this.repository.findJobById(jobId);
 		principal = request.getPrincipal();
-
-		return this.repository.findNumberApplicationsByJobId(jobId, principal.getActiveRoleId()) > 0;
+		Date nowDate = new Date(System.currentTimeMillis());
+		boolean isActive = job.getDeadline().after(nowDate) && job.getStatus().equals(Status.PUBLISHED);
+		return isActive || this.repository.findNumberApplicationsByJobId(jobId, principal.getActiveRoleId()) > 0;
 	}
 
 	@Override
