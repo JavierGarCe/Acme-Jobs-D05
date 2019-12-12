@@ -133,7 +133,7 @@ master.menu.sponsor = Sponsor
 master.menu.sponsor.listMineCommercialBanners = Listar mis banners comerciales
 master.menu.sponsor.listMineNonCommercialBanners = Listar mis banners no comerciales
 master.menu.sponsor.createCommercialBanners = Crear banner comercial
-master.menu.sponsor.createNonCommercialBanners = Crear banner no comercial
+master.menu.sponsor.nonCommercialBanners.create = Crear banner no comercial
 
 # master.menu.auditor #########################################################
 
