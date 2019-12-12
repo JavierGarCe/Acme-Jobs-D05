@@ -8,6 +8,7 @@ worker.application.form.label.status.accepted = Aceptada
 worker.application.form.label.status.pending = Pendiente
 worker.application.form.label.status.rejected = Rechazada
 worker.application.form.button.return = Volver
+employer.application.form.button.createApplication = Crear aplicación
 
 worker.application.list.label.moment = Momento
 worker.application.list.label.status = Estado

@@ -1,5 +1,4 @@
-
-    create table `administrator` (
+create table `administrator` (
        `id` integer not null,
         `version` integer not null,
         `user_account_id` integer,
@@ -26,6 +25,7 @@
     create table `application` (
        `id` integer not null,
         `version` integer not null,
+        `justification` varchar(255),
         `moment` datetime(6),
         `qualifications` varchar(255),
         `reference` varchar(255),
@@ -257,6 +257,15 @@
         primary key (`id`)
     ) engine=InnoDB;
 
+    create table `request_auditor` (
+       `id` integer not null,
+        `version` integer not null,
+        `firm` varchar(255),
+        `responsability_statement` varchar(255),
+        `authenticated_id` integer not null,
+        primary key (`id`)
+    ) engine=InnoDB;
+
     create table `requests` (
        `id` integer not null,
         `version` integer not null,
@@ -352,9 +361,6 @@
         primary key (`id`)
     ) engine=InnoDB;
 create index IDXnhikaa2dj3la6o2o7e9vo01y0 on `announcement` (`moment`);
-create index IDX2q2747fhp099wkn3j2yt05fhs on `application` (`status`);
-create index IDXdwumdwpjcwdk1mef9ua69yc2p on `application` (`reference`);
-create index IDXg54pxa1gngqheaipukeg8jypk on `application` (`moment`);
 
     alter table `application` 
        add constraint UK_ct7r18vvxl5g4c4k7aefpa4do unique (`reference`);
@@ -378,6 +384,9 @@ create index IDXcp4664f36sgqsd0ihmirt0w0 on `offer` (`ticker`);
 
     alter table `offer` 
        add constraint UK_iex7e8fs0fh89yxpcnm1orjkm unique (`ticker`);
+
+    alter table `request_auditor` 
+       add constraint UK_ei3fu6x562eyti7w3e0lsu522 unique (`authenticated_id`);
 create index IDXmly5kwrpgadjkxv5t5dgw36hr on `requests` (`deadline`);
 create index IDX2ijmvvrwi2t1isu2m2ncm5qn1 on `requests` (`ticker`);
 
@@ -479,6 +488,11 @@ create index IDX2ijmvvrwi2t1isu2m2ncm5qn1 on `requests` (`ticker`);
        add constraint FK_b1gwnjqm6ggy9yuiqm0o4rlmd 
        foreign key (`user_account_id`) 
        references `user_account` (`id`);
+
+    alter table `request_auditor` 
+       add constraint `FK9giuqpn53mab8yca7a3noeckl` 
+       foreign key (`authenticated_id`) 
+       references `authenticated` (`id`);
 
     alter table `sponsor` 
        add constraint FK_20xk0ev32hlg96kqynl6laie2 

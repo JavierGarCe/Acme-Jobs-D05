@@ -11,3 +11,5 @@ sponsor.banner.nonCommercial.form.button.return = Volver
 sponsor.banner.nonCommercial.form.button.update = Actualizar
 sponsor.banner.nonCommercial.form.button.delete = Borrar
 sponsor.banner.nonCommercial.form.button.create = Crear
+
+error.nonCommercialBanner.input.spam = La entrada es considerada spam

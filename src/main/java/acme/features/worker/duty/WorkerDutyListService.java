@@ -2,11 +2,14 @@
 package acme.features.worker.duty;
 
 import java.util.Collection;
+import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import acme.datatypes.Status;
 import acme.entities.jobs.Duty;
+import acme.entities.jobs.Job;
 import acme.entities.roles.Worker;
 import acme.framework.components.Model;
 import acme.framework.components.Request;
@@ -28,8 +31,11 @@ public class WorkerDutyListService implements AbstractListService<Worker, Duty> 
 
 		jobId = request.getModel().getInteger("id");
 		principal = request.getPrincipal();
+		Job job = this.repository.findJobById(jobId);
+		Date nowDate = new Date(System.currentTimeMillis());
+		boolean isActive = job.getDeadline().after(nowDate) && job.getStatus().equals(Status.PUBLISHED);
 
-		return this.repository.findNumberApplicationsByJobId(jobId, principal.getActiveRoleId()) > 0;
+		return isActive || this.repository.findNumberApplicationsByJobId(jobId, principal.getActiveRoleId()) > 0; //Tendrá acceso si el trabajo está activo o bien si ya había aplicado a ese trabajo
 	}
 
 	@Override

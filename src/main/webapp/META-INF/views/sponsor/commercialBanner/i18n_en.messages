@@ -8,6 +8,11 @@ sponsor.banner.commercial.form.label.creditCard = Credit card number:
 
 sponsor.banner.commercial.form.button.return = Return
 
-sponsor.commercial-banner.form.button.update = Update
-sponsor.commercial-banner.form.button.delete = Delete
-sponsor.commercial-banner.form.button.create = Create
+sponsor.banner.commercial.form.button.update = Update
+sponsor.banner.commercial.form.button.delete = Delete
+sponsor.banner.commercial.form.button.create = Create
+
+error.CommercialBanner.input.spam = Input is considered spam 
+error.commercialBanner.notCreditRegistred.create = You must register a credit card to create commercial banners
+error.commercialBanner.notCreditRegistred.update = You must register a credit card to update commercial banners
+sponsor.banner.commercial.form.data = Update your data
