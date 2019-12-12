@@ -258,6 +258,15 @@
         primary key (`id`)
     ) engine=InnoDB;
 
+    create table `request_auditor` (
+       `id` integer not null,
+        `version` integer not null,
+        `firm` varchar(255),
+        `responsability_statement` varchar(255),
+        `authenticated_id` integer not null,
+        primary key (`id`)
+    ) engine=InnoDB;
+
     create table `requests` (
        `id` integer not null,
         `version` integer not null,
@@ -376,6 +385,9 @@ create index IDXcp4664f36sgqsd0ihmirt0w0 on `offer` (`ticker`);
 
     alter table `offer` 
        add constraint UK_iex7e8fs0fh89yxpcnm1orjkm unique (`ticker`);
+
+    alter table `request_auditor` 
+       add constraint UK_ei3fu6x562eyti7w3e0lsu522 unique (`authenticated_id`);
 create index IDXmly5kwrpgadjkxv5t5dgw36hr on `requests` (`deadline`);
 create index IDX2ijmvvrwi2t1isu2m2ncm5qn1 on `requests` (`ticker`);
 
@@ -477,6 +489,11 @@ create index IDX2ijmvvrwi2t1isu2m2ncm5qn1 on `requests` (`ticker`);
        add constraint FK_b1gwnjqm6ggy9yuiqm0o4rlmd 
        foreign key (`user_account_id`) 
        references `user_account` (`id`);
+
+    alter table `request_auditor` 
+       add constraint `FK9giuqpn53mab8yca7a3noeckl` 
+       foreign key (`authenticated_id`) 
+       references `authenticated` (`id`);
 
     alter table `sponsor` 
        add constraint FK_20xk0ev32hlg96kqynl6laie2 

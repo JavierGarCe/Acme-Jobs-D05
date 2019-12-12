@@ -101,6 +101,7 @@ master.menu.administrator.listAllInvestorRecords = List all investor records
 
 master.menu.administrator.createInvestorRecords = Create investor record
 
+master.menu.administrator.request.auditor = List auditor requests
 
 master.menu.administrator.chart = Charts
 
@@ -149,8 +150,14 @@ master.menu.user-account.become-provider = Become a provider
 master.menu.user-account.consumer = Consumer data
 master.menu.user-account.become-consumer = Become a consumer
 master.menu.user-account.listCompanyRecords = List company records
+master.menu.user-account.become-employer = Become a employer
+master.menu.user-account.employer = Employer data
 master.menu.user-account.become-worker = Become a worker
+master.menu.user-account.become-sponsor = Become a sponsor
 master.menu.user-account.worker = Worker data
+master.menu.user-account.auditor = Auditor data
+master.menu.user-account.become-auditor = Request to become an auditor
+master.menu.user-account.sponsor = Sponsor data
 
 # master.footer ###############################################################
 
