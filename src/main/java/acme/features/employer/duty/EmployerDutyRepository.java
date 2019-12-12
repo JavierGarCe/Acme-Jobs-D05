@@ -6,6 +6,7 @@ import java.util.Collection;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
+import acme.entities.customization.Customization;
 import acme.entities.jobs.Descriptor;
 import acme.entities.jobs.Duty;
 import acme.entities.jobs.Job;
@@ -34,4 +35,7 @@ public interface EmployerDutyRepository extends AbstractRepository {
 
 	@Query("select d from Descriptor d join d.duties du where du.id = ?1")
 	Descriptor findOneDescriptionById(int id);
+
+	@Query("select c from Customization c")
+	Customization getCustomization();
 }

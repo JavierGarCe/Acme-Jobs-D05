@@ -14,3 +14,5 @@ employer.duty.form.button.delete = Borrar
 
 employer.duty.error.max-percentage = Las tareas no pueden sumar más del 100% de la carga de trabajo semanal. El máximo porcentaje de esta tarea es: {0}
 employer.duty.error.not-positive-percentage = El porcentaje debe ser mayor de 0 
+
+employer.duty.error.spam = La entrada es considerada spam

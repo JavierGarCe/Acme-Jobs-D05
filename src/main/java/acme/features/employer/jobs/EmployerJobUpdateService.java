@@ -109,32 +109,30 @@ public class EmployerJobUpdateService implements AbstractUpdateService<Employer,
 			}
 			boolean fullWorkload = percentage == 100.0;
 			errors.state(request, fullWorkload, "status", "employer.job.error.non-fullWorkload-job");
+			Customization customization = this.repository.getCustomization();
+			String[] spamwords = customization.getSpamword().toLowerCase().split(", ");
 
 			if (!errors.hasErrors("descriptor.description")) {
 				String description = entity.getDescriptor().getDescription();
-				Customization customization = this.repository.getCustomization();
-				String[] spamwords = customization.getSpamword().toLowerCase().split(", ");
 				int i = description.length();
 				int b = 0;
 				for (String spamword : spamwords) {
 					b = b + i - entity.getDescriptor().getDescription().toLowerCase().replace(spamword, "").length();
 				}
 				boolean isSpam = b * 100 / i >= customization.getThreshold();
-				errors.state(request, !isSpam, "descriptor.description", "employer.job.error.spam-job", "description", "Esta descripción");
+				errors.state(request, !isSpam, "descriptor.description", "employer.job.error.spam");
 
 			}
 
 			if (!errors.hasErrors("title")) {
 				String title = entity.getTitle();
-				Customization customization = this.repository.getCustomization();
-				String[] spamwords = customization.getSpamword().toLowerCase().split(", ");
 				int i = title.length();
 				int b = 0;
 				for (String spamword : spamwords) {
 					b = b + i - entity.getTitle().toLowerCase().replace(spamword, "").length();
 				}
 				boolean isSpam = b * 100 / i >= customization.getThreshold();
-				errors.state(request, !isSpam, "title", "employer.job.error.spam-job", "title", "Este título");
+				errors.state(request, !isSpam, "title", "employer.job.error.spam");
 
 			}
 		}

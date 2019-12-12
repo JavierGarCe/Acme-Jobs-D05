@@ -14,3 +14,5 @@ employer.duty.form.button.delete = Delete
 
 employer.duty.error.max-percentage = The duties cannot add up to more than 100% of the weekly workload. The maximum percentage of this duty is: {0}
 employer.duty.error.not-positive-percentage = The percentage must be greater than 0 
+
+employer.duty.error.spam = Input is considered spam

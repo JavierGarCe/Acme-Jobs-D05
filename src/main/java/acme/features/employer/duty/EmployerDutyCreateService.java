@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.datatypes.Status;
+import acme.entities.customization.Customization;
 import acme.entities.jobs.Duty;
 import acme.entities.jobs.Job;
 import acme.entities.roles.Employer;
@@ -77,6 +78,31 @@ public class EmployerDutyCreateService implements AbstractCreateService<Employer
 			double percMax = 100.0 - percentage;
 			boolean max = percentage + entity.getPercentage() <= 100.0;
 			errors.state(request, max, "percentage", "employer.duty.error.max-percentage", percMax);
+		}
+
+		Customization customization = this.repository.getCustomization();
+		String[] spamwords = customization.getSpamword().toLowerCase().split(", ");
+		if (!errors.hasErrors("title")) {
+			String title = entity.getTitle();
+			int i = title.length();
+			int b = 0;
+			for (String spamword : spamwords) {
+				b = b + i - entity.getTitle().toLowerCase().replace(spamword, "").length();
+			}
+			boolean isSpam = b * 100 / i >= customization.getThreshold();
+			errors.state(request, !isSpam, "title", "employer.duty.error.spam");
+
+		}
+		if (!errors.hasErrors("description")) {
+			String description = entity.getDescription();
+			int i = description.length();
+			int b = 0;
+			for (String spamword : spamwords) {
+				b = b + i - entity.getDescription().toLowerCase().replace(spamword, "").length();
+			}
+			boolean isSpam = b * 100 / i >= customization.getThreshold();
+			errors.state(request, !isSpam, "description", "employer.duty.error.spam");
+
 		}
 	}
 
