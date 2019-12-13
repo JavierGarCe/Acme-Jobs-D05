@@ -81,29 +81,40 @@ public class EmployerDutyCreateService implements AbstractCreateService<Employer
 		}
 
 		Customization customization = this.repository.getCustomization();
-		String[] spamwords = customization.getSpamword().toLowerCase().split(", ");
-		if (!errors.hasErrors("title")) {
-			String title = entity.getTitle();
-			int i = title.length();
-			int b = 0;
-			for (String spamword : spamwords) {
-				b = b + i - entity.getTitle().toLowerCase().replace(spamword, "").length();
-			}
-			boolean isSpam = b * 100 / i >= customization.getThreshold();
-			errors.state(request, !isSpam, "title", "employer.duty.error.spam");
+		String[] spamWords = customization.getSpamword().toLowerCase().split(", ");
+		Double threshold = customization.getThreshold();
 
-		}
 		if (!errors.hasErrors("description")) {
-			String description = entity.getDescription();
-			int i = description.length();
-			int b = 0;
-			for (String spamword : spamwords) {
-				b = b + i - entity.getDescription().toLowerCase().replace(spamword, "").length();
+			String description = entity.getDescription().toLowerCase();
+			Double numberLetters = new Double(description.length());
+			Double numberSpamWordsInLetters = 0.0;
+			for (String s : spamWords) {
+				if (description.contains(s.trim())) {
+					numberSpamWordsInLetters += s.length();
+				}
+
 			}
-			boolean isSpam = b * 100 / i >= customization.getThreshold();
-			errors.state(request, !isSpam, "description", "employer.duty.error.spam");
+			Double percentageSpam = numberSpamWordsInLetters / numberLetters * 100.0;
+			Boolean notSpam = percentageSpam < threshold;
+			errors.state(request, notSpam, "description", "employer.duty.error.spam");
 
 		}
+
+		if (!errors.hasErrors("title")) {
+			String title = entity.getTitle().toLowerCase();
+			Double numberLetters = new Double(title.length());
+			Double numberSpamWordsInLetters = 0.0;
+			for (String s : spamWords) {
+				if (title.contains(s.trim())) {
+					numberSpamWordsInLetters += s.length();
+				}
+			}
+			Double percentageSpam = numberSpamWordsInLetters / numberLetters * 100.0;
+			Boolean notSpam = percentageSpam < threshold;
+			errors.state(request, notSpam, "title", "employer.duty.error.spam");
+
+		}
+
 	}
 
 	@Override

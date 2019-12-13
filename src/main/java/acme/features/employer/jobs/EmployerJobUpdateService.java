@@ -109,30 +109,39 @@ public class EmployerJobUpdateService implements AbstractUpdateService<Employer,
 			}
 			boolean fullWorkload = percentage == 100.0;
 			errors.state(request, fullWorkload, "status", "employer.job.error.non-fullWorkload-job");
+
 			Customization customization = this.repository.getCustomization();
-			String[] spamwords = customization.getSpamword().toLowerCase().split(", ");
+			String[] spamWords = customization.getSpamword().toLowerCase().split(",");
+			Double threshold = customization.getThreshold();
 
 			if (!errors.hasErrors("descriptor.description")) {
-				String description = entity.getDescriptor().getDescription();
-				int i = description.length();
-				int b = 0;
-				for (String spamword : spamwords) {
-					b = b + i - entity.getDescriptor().getDescription().toLowerCase().replace(spamword, "").length();
+				String description = entity.getDescriptor().getDescription().toLowerCase();
+				Double numberLetters = new Double(description.length());
+				Double numberSpamWordsInLetters = 0.0;
+				for (String s : spamWords) {
+					if (description.contains(s.trim())) {
+						numberSpamWordsInLetters += s.length();
+					}
 				}
-				boolean isSpam = b * 100 / i >= customization.getThreshold();
-				errors.state(request, !isSpam, "descriptor.description", "employer.job.error.spam");
+				Double percentageSpam = numberSpamWordsInLetters / numberLetters * 100.0;
+				Boolean notSpam = percentageSpam < threshold;
+				errors.state(request, notSpam, "descriptor.description", "employer.job.error.spam");
 
 			}
 
 			if (!errors.hasErrors("title")) {
-				String title = entity.getTitle();
-				int i = title.length();
-				int b = 0;
-				for (String spamword : spamwords) {
-					b = b + i - entity.getTitle().toLowerCase().replace(spamword, "").length();
+				String title = entity.getTitle().toLowerCase();
+				Double numberLetters = new Double(title.length());
+				Double numberSpamWordsInLetters = 0.0;
+				for (String s : spamWords) {
+					if (title.contains(s.trim())) {
+						numberSpamWordsInLetters += s.length();
+					}
+
 				}
-				boolean isSpam = b * 100 / i >= customization.getThreshold();
-				errors.state(request, !isSpam, "title", "employer.job.error.spam");
+				Double percentageSpam = numberSpamWordsInLetters / numberLetters * 100.0;
+				Boolean notSpam = percentageSpam < threshold;
+				errors.state(request, notSpam, "title", "employer.job.error.spam");
 
 			}
 		}
