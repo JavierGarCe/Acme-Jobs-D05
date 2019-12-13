@@ -41,7 +41,7 @@ public class AuthenticatedConsumerUpdateService implements AbstractUpdateService
 	public boolean authorise(final Request<Consumer> request) {
 		assert request != null;
 
-		return true;
+		return request.getPrincipal().hasRole(Consumer.class);
 	}
 
 	@Override

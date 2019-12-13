@@ -25,4 +25,7 @@ public interface AuthenticatedRequestAuditorRepository extends AbstractRepositor
 	@Query("select a from RequestAuditor a where a.authenticated.userAccount.id = ?1")
 	RequestAuditor findOneRequestAuditorByUserAccountId(int id);
 
+	@Query("select a from RequestAuditor a where a.authenticated.userAccount.id = ?1 and a.finished =0")
+	RequestAuditor findOneRequestAuditorNotFinishedByUserAccountId(int accountId);
+
 }

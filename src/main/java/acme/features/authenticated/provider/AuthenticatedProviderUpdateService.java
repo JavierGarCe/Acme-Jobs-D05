@@ -41,7 +41,7 @@ public class AuthenticatedProviderUpdateService implements AbstractUpdateService
 	public boolean authorise(final Request<Provider> request) {
 		assert request != null;
 
-		return true;
+		return request.getPrincipal().hasRole(Provider.class);
 	}
 
 	@Override
