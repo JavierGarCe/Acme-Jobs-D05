@@ -1,5 +1,5 @@
 
-package acme.features.authenticated.thread;
+package acme.features.authenticated.userThread;
 
 import java.util.Collection;
 
@@ -11,15 +11,12 @@ import acme.framework.entities.Authenticated;
 import acme.framework.repositories.AbstractRepository;
 
 @Repository
-public interface AuthenticatedThreadRepository extends AbstractRepository {
+public interface AuthenticatedUsersThreadRepository extends AbstractRepository {
 
 	@Query("select t from Thread t where t.id = ?1")
 	Thread findOneById(int id);
 
-	@Query("select distinct t from Thread t join t.authenticateds a on a.id = ?1")
-	Collection<Thread> findManyByAuthenticatedId(int id);
-
-	@Query("select e from Authenticated e where e.id = ?1")
-	Authenticated findAuthenticatedById(int id);
+	@Query("select a from Authenticated a where a not in (select t from Thread t where t.id=?1)")
+	Collection<Authenticated> findAuthenticatedNoThread(int id);
 
 }

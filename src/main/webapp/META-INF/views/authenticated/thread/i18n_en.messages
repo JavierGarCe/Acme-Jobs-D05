@@ -8,6 +8,7 @@ authenticated.message.form.label.moment = Moment
 authenticated.message.form.label.tags = Tags
 authenticated.message.form.label.body = Body
 authenticated.threads.form.label.message = Show messages
+authenticated.threads.button.create = Create
 
 authenticated.threads.list.label.title = Title
 authenticated.threads.list.label.moment = Moment

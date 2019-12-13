@@ -11,7 +11,6 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Past;
 
 import acme.entities.messages.Message;
@@ -40,11 +39,9 @@ public class Thread extends DomainEntity {
 
 	// Relationships -----------------------------------------------------------
 
-	@NotEmpty
 	@OneToMany
 	Collection<@Valid Message>			messages;
 
-	@NotEmpty
 	@ManyToMany
 	Collection<@Valid Authenticated>	authenticateds;
 }
