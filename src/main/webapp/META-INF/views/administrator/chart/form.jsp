@@ -11,6 +11,8 @@
 
 <div style="clear:left"> <canvas id="canvas2"></canvas> </div>
 
+<div style="clear:left"> <canvas id="canvas3"></canvas> </div>
+
 
 <script type="text/javascript">
 
@@ -151,6 +153,96 @@
 				]
 
 			};
+		
+			var data3 = {
+
+					labels : [
+						<jstl:forEach var ="i" items="${applicationsLastMonth}">
+						"<jstl:out value='${i[0]}'/>",
+						</jstl:forEach>		
+						
+
+						],
+
+					datasets : [
+
+						{
+
+							borderColor:"rgba(255, 252, 59, 1)",
+							
+							fill: false,
+
+							label:"<acme:message code='pendingApplicationsPerDay'/>",
+
+							data :[
+								<jstl:forEach var ="i" items="${applicationsLastMonth}">
+								<jstl:if test="${i[1] == 'PENDING'}">
+									<jstl:out value="${i[2]}"/>,
+								</jstl:if>
+								<jstl:if test="${i[1] != 'PENDING'}">
+									<jstl:out value="0"/>,
+								</jstl:if>
+								</jstl:forEach>
+												
+								
+
+						 	]
+
+						},
+						
+						{
+
+							borderColor:"rgba(12, 250, 32, 1)",
+							
+							fill: false,
+
+							label:"<acme:message code='acceptedApplicationsPerDay'/>",
+
+							data :[
+								<jstl:forEach var ="i" items="${applicationsLastMonth}">
+								<jstl:if test="${i[1] == 'ACCEPTED'}">
+									<jstl:out value="${i[2]}"/>,
+								</jstl:if>
+								<jstl:if test="${i[1] != 'ACCEPTED'}">
+									<jstl:out value="0"/>,
+								</jstl:if>
+								</jstl:forEach>
+												
+								
+
+						 	]
+
+						},
+						
+						{
+
+							borderColor:"rgba(12, 242, 250, 1)",
+							
+							fill: false,
+
+							label:"<acme:message code='rejectedApplicationsPerDay'/>",
+
+							data :[
+								<jstl:forEach var ="i" items="${applicationsLastMonth}">
+								<jstl:if test="${i[1] == 'REJECTED'}">
+									<jstl:out value="${i[2]}"/>,
+								</jstl:if>
+								<jstl:if test="${i[1] != 'REJECTED'}">
+									<jstl:out value="0"/>,
+								</jstl:if>
+								</jstl:forEach>
+												
+								
+
+						 	]
+
+						}
+						
+									
+
+					]
+
+				};
 
 		var options = {
 
@@ -214,8 +306,25 @@
 			options : options
 
 		});
+		
+		var canvas3, context3;
+		
+		canvas3=document.getElementById("canvas3");
+		
+		context3=canvas3.getContext("2d");
+		
+		new Chart( context3, {
+
+			type : "line",
+
+			data : data3,
+
+			options : options
+
+		});
 
 	});
+	
 
 	
 
