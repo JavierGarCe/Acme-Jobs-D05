@@ -27,4 +27,7 @@ public class UserThread extends DomainEntity {
 	@Valid
 	@ManyToOne(optional = false)
 	private Authenticated		authenticated;
+
+	@NotNull
+	private Boolean				creatorThread;
 }

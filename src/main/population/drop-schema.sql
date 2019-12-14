@@ -75,14 +75,6 @@
        drop 
        foreign key FK_20xk0ev32hlg96kqynl6laie2;
 
-    alter table `thread_authenticated` 
-       drop 
-       foreign key `FK1e718rov5gxl1f3tgjtl6vhtg`;
-
-    alter table `thread_authenticated` 
-       drop 
-       foreign key `FKjsja3s5mr66x5nxm9dd8kut3r`;
-
     alter table `thread_message` 
        drop 
        foreign key `FKrjegm8cujrxgbce9n1b78xuyo`;
@@ -90,6 +82,14 @@
     alter table `thread_message` 
        drop 
        foreign key `FKgjodhp3io8v829t92y1tdtb7u`;
+
+    alter table `user_thread` 
+       drop 
+       foreign key `FK6xw933hridqg9eocw62m78juj`;
+
+    alter table `user_thread` 
+       drop 
+       foreign key `FK4wgkggbo0hdqk7l9k1fv0lbld`;
 
     alter table `worker` 
        drop 
@@ -155,11 +155,11 @@
 
     drop table if exists `thread`;
 
-    drop table if exists `thread_authenticated`;
-
     drop table if exists `thread_message`;
 
     drop table if exists `user_account`;
+
+    drop table if exists `user_thread`;
 
     drop table if exists `worker`;
 

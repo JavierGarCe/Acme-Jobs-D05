@@ -931,6 +931,7 @@
 	<bean id="userThread01" class="acme.entities.threads.UserThread">
 		<property name="thread" ref="thread1"/>
 		<property name="authenticated" ref="employer1Authenticated"/>
+		<property name="creatorThread" value = "true"/>
 	</bean>
 	
 	<bean id="thread2" class="acme.entities.threads.Thread">
@@ -948,14 +949,17 @@
 	<bean id="userThread02" class="acme.entities.threads.UserThread">
 		<property name="thread" ref="thread2"/>
 		<property name="authenticated" ref="employer1Authenticated"/>
+		<property name="creatorThread" value = "true"/>
 	</bean>
 	<bean id="userThread03" class="acme.entities.threads.UserThread">
 		<property name="thread" ref="thread2"/>
 		<property name="authenticated" ref="worker1Authenticated"/>
+		<property name="creatorThread" value = "false"/>
 	</bean>
 	<bean id="userThread04" class="acme.entities.threads.UserThread">
 		<property name="thread" ref="thread2"/>
 		<property name="authenticated" ref="auditorAuthenticated"/>
+		<property name="creatorThread" value = "false"/>
 	</bean>
 	
 	<bean id="thread3" class="acme.entities.threads.Thread">
@@ -970,6 +974,7 @@
 	<bean id="userThread05" class="acme.entities.threads.UserThread">
 		<property name="thread" ref="thread3"/>
 		<property name="authenticated" ref="sponsor1Authenticated"/>
+		<property name="creatorThread" value = "true"/>
 	</bean>
 	
 </beans>

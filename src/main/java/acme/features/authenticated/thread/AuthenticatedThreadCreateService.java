@@ -88,6 +88,7 @@ public class AuthenticatedThreadCreateService implements AbstractCreateService<A
 		Authenticated me = this.repository.findAuthenticatedById(request.getPrincipal().getActiveRoleId());
 		userThread.setAuthenticated(me);
 		userThread.setThread(entity);
+		userThread.setCreatorThread(true);
 
 		this.repository.save(entity);
 		this.repository.save(userThread);

@@ -23,6 +23,10 @@ public class AuthenticatedUserThreadCreateService implements AbstractCreateServi
 	public boolean authorise(final Request<UserThread> request) {
 		assert request != null;
 		// TODO Solo podra meter un usuario en un hilo si es su hilo
+		int threadId = request.getModel().getInteger("threadId");
+		int id = request.getPrincipal().getActiveRoleId();
+		UserThread userThread = this.repository.findOneByThreadIdAndAuthenticatedId(threadId, id);
+		boolean res = userThread.getCreatorThread();
 		return true;
 	}
 
@@ -52,7 +56,7 @@ public class AuthenticatedUserThreadCreateService implements AbstractCreateServi
 		int authenticatedId;
 		int threadId;
 
-		authenticatedId = request.getModel().getInteger("id");
+		authenticatedId = request.getModel().getInteger("idAuthenticated");
 		threadId = request.getModel().getInteger("threadId");
 
 		Authenticated authenticated = this.repository.findOneAuthenticatedById(authenticatedId);
@@ -61,6 +65,7 @@ public class AuthenticatedUserThreadCreateService implements AbstractCreateServi
 		result = new UserThread();
 		result.setAuthenticated(authenticated);
 		result.setThread(thread);
+		result.setCreatorThread(false);
 
 		return result;
 	}
