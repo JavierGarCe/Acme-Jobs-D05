@@ -40,8 +40,10 @@ public class AuthenticatedSponsorUpdateService implements AbstractUpdateService<
 	@Override
 	public boolean authorise(final Request<Sponsor> request) {
 		assert request != null;
+		Principal principal = request.getPrincipal();
+		Integer userAccountId = principal.getAccountId();
 
-		return true;
+		return this.repository.findOneSponsorByUserAccountId(userAccountId) != null;
 	}
 
 	@Override
@@ -49,6 +51,14 @@ public class AuthenticatedSponsorUpdateService implements AbstractUpdateService<
 		assert request != null;
 		assert entity != null;
 		assert errors != null;
+		String creditCard;
+		Boolean valida = true;
+		if (!errors.hasErrors("creditCard") && !entity.getCreditCard().isEmpty()) {
+			creditCard = entity.getCreditCard();
+			valida = AuthenticatedSponsorCreateService.Check(creditCard.trim());
+		}
+
+		errors.state(request, valida, "creditCard", "authenticated.message.error.creditCard");
 	}
 
 	@Override

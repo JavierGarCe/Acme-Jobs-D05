@@ -1,7 +1,9 @@
-authenticated.sponsor.form.label.qualifications = organisation name
-authenticated.sponsor.form.label.skills = credit card
+authenticated.sponsor.form.label.organisationName = organisation name
+authenticated.sponsor.form.label.creditCard = credit card
 authenticated.sponsor.form.button.create = Register
 authenticated.sponsor.form.button.update = Update
 authenticated.sponsor.form.button.return = Return
 authenticated.sponsor.form.title.create = Become a sponsor
 authenticated.sponsor.form.title.update = Update your sponsor data
+
+authenticated.message.error.creditCard = The credit Card number is false

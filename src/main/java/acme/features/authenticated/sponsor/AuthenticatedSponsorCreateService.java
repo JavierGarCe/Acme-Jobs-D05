@@ -41,8 +41,11 @@ public class AuthenticatedSponsorCreateService implements AbstractCreateService<
 	@Override
 	public boolean authorise(final Request<Sponsor> request) {
 		assert request != null;
+		Principal principal = request.getPrincipal();
+		Integer userAccountId = principal.getAccountId();
 
-		return true;
+		return this.repository.findOneSponsorByUserAccountId(userAccountId) == null;
+
 	}
 
 	@Override
@@ -50,6 +53,14 @@ public class AuthenticatedSponsorCreateService implements AbstractCreateService<
 		assert request != null;
 		assert entity != null;
 		assert errors != null;
+		String creditCard;
+		Boolean valida = true;
+		if (!errors.hasErrors("creditCard") && !entity.getCreditCard().isEmpty()) {
+			creditCard = entity.getCreditCard();
+			valida = AuthenticatedSponsorCreateService.Check(creditCard.trim());
+		}
+
+		errors.state(request, valida, "creditCard", "authenticated.message.error.creditCard");
 	}
 
 	@Override
@@ -105,6 +116,44 @@ public class AuthenticatedSponsorCreateService implements AbstractCreateService<
 		if (request.isMethod(HttpMethod.POST)) {
 			PrincipalHelper.handleUpdate();
 		}
+	}
+
+	public static boolean verificacionluhn(final int[] digits) {
+		int sum = 0;
+		int length = digits.length;
+		for (int i = 0; i < length; i++) {
+			// sacar los digitos en orden inverso
+			int digit = digits[length - i - 1];
+
+			// cada segundo número se multiplica por 2
+			if (i % 2 == 1) {
+				digit = digit * 2;
+			}
+			if (digit > 9) {
+				digit = digit - 9;
+			}
+			sum = sum + digit;
+		}
+		return sum % 10 == 0;
+	}
+	public static boolean Check(final String ccNumber)
+
+	{
+
+		int sum = 0;
+		boolean alternate = false;
+		for (int i = ccNumber.length() - 1; i >= 0; i--) {
+			int n = Integer.parseInt(ccNumber.substring(i, i + 1));
+			if (alternate) {
+				n *= 2;
+				if (n > 9) {
+					n = n % 10 + 1;
+				}
+			}
+			sum += n;
+			alternate = !alternate;
+		}
+		return sum % 10 == 0;
 	}
 
 }
