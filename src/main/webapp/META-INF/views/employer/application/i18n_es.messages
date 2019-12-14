@@ -11,10 +11,10 @@ employer.application.form.label.status.rejected = Rechazada
 employer.application.form.label.status.accepted = Aceptada
 employer.application.form.button.job = Ir al trabajo
 employer.application.form.button.return = Volver
-employer.application.form.label.accept = Aceptar
-employer.application.form.label.reject = Rechazar
+employer.application.form.label.update = Actualizar
 
 employer.justification.error.notblank = El rechazo de una aplicación debe estar justificado
+employer.status.error.notupdated = La aplicación debe ser aceptada o rechazada
 
 employer.application.list.label.moment = Momento
 employer.application.list.label.status = Estado
