@@ -36,7 +36,6 @@ public class AuthenticatedUserThreadCreateService implements AbstractCreateServi
 		assert entity != null;
 		assert errors != null;
 
-		request.bind(entity, errors);
 	}
 
 	@Override
@@ -45,7 +44,6 @@ public class AuthenticatedUserThreadCreateService implements AbstractCreateServi
 		assert entity != null;
 		assert model != null;
 
-		request.unbind(entity, model, "authenticated.userAccount.username");
 	}
 
 	@Override
