@@ -118,10 +118,9 @@
 		
 		<acme:menu-option code="master.menu.employer" access="hasRole('Employer')">
 			<acme:menu-suboption code="master.menu.employer.listMineEmployer" action="/employer/job/list-mine" />
-			<acme:menu-suboption code="master.menu.employer.listMineApplication" action="/employer/application/list-mine?group=" />
 			<acme:menu-suboption code="master.menu.employer.creteJob" action="/employer/job/create" />
 			<acme:menu-separator/>
-			<acme:menu-suboption code="master.menu.employer.listMineApplication" action="/employer/application/list-mine" />
+			<acme:menu-suboption code="master.menu.employer.listMineApplication" action="/employer/application/list-mine?group=" />
 			
 		</acme:menu-option>
 		
@@ -140,7 +139,6 @@
 
 		<acme:menu-option code="master.menu.worker" access="hasRole('Worker')">
 			<acme:menu-suboption code="master.menu.worker.listMineApplication" action="/worker/application/list-mine?group=" />
-			<acme:menu-suboption code="master.menu.worker.listMineApplication" action="/worker/application/list-mine" />
 			<acme:menu-suboption code="master.menu.worker.listNonAppliedJobs" action="/worker/job/list-non-applied" />
 		</acme:menu-option>
 
