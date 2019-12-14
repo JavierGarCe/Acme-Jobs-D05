@@ -12,3 +12,5 @@ authenticated.threads.button.create = Create
 
 authenticated.threads.list.label.title = Title
 authenticated.threads.list.label.moment = Moment
+
+authenticated.threads.form.label.users = Users

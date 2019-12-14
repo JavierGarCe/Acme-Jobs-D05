@@ -16,10 +16,12 @@ public interface AuthenticatedThreadRepository extends AbstractRepository {
 	@Query("select t from Thread t where t.id = ?1")
 	Thread findOneById(int id);
 
-	@Query("select distinct t from Thread t join t.authenticateds a on a.id = ?1")
+	@Query("select ut.thread from UserThread ut where ut.authenticated.id = ?1")
 	Collection<Thread> findManyByAuthenticatedId(int id);
 
-	@Query("select e from Authenticated e where e.id = ?1")
-	Authenticated findAuthenticatedById(int id);
+	@Query("select count(ut) from UserThread ut where ut.authenticated.id = ?1 and ut.thread.id = ?2")
+	Integer countNumberUserThreadByAuthenticatedIdAndThreadId(int autId, int threadId);
 
+	@Query("select a from Authenticated a where a.id = ?1")
+	Authenticated findAuthenticatedById(int id);
 }

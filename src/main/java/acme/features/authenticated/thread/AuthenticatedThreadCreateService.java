@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.entities.threads.Thread;
+import acme.entities.threads.UserThread;
 import acme.framework.components.Errors;
 import acme.framework.components.Model;
 import acme.framework.components.Request;
@@ -60,7 +61,6 @@ public class AuthenticatedThreadCreateService implements AbstractCreateService<A
 		lista.add(authenticated);
 		Thread thread;
 		thread = new Thread();
-		thread.setAuthenticateds(lista);
 
 		return thread;
 	}
@@ -83,8 +83,14 @@ public class AuthenticatedThreadCreateService implements AbstractCreateService<A
 
 		moment = new Date(System.currentTimeMillis() - 1);
 		entity.setMoment(moment);
-		this.repository.save(entity);
 
+		UserThread userThread = new UserThread();
+		Authenticated me = this.repository.findAuthenticatedById(request.getPrincipal().getActiveRoleId());
+		userThread.setAuthenticated(me);
+		userThread.setThread(entity);
+
+		this.repository.save(entity);
+		this.repository.save(userThread);
 	}
 
 }

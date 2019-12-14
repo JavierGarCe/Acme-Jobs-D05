@@ -1,5 +1,5 @@
 
-package acme.features.authenticated.userThread;
+package acme.features.authenticated.authenticated;
 
 import java.util.Collection;
 
@@ -12,16 +12,16 @@ import acme.framework.entities.Authenticated;
 import acme.framework.services.AbstractListService;
 
 @Service
-public class AuthenticatedUsersThreadNoListService implements AbstractListService<Authenticated, Authenticated> {
+public class AuthenticatedAuthenticatedListService implements AbstractListService<Authenticated, Authenticated> {
 
 	@Autowired
-	private AuthenticatedUsersThreadRepository repository;
+	private AuthenticatedAuthenticatedRepository repository;
 
 
 	@Override
 	public boolean authorise(final Request<Authenticated> request) {
 		assert request != null;
-
+		// TODO hay que ver que exista un hilo con la id dada y que yo sea su propietario?
 		return true;
 	}
 
@@ -31,7 +31,7 @@ public class AuthenticatedUsersThreadNoListService implements AbstractListServic
 		assert entity != null;
 		assert model != null;
 
-		request.unbind(entity, model, "userAccount.username"); //DUDA
+		request.unbind(entity, model, "userAccount.username"); //DUDA	
 
 	}
 
@@ -41,10 +41,9 @@ public class AuthenticatedUsersThreadNoListService implements AbstractListServic
 
 		Collection<Authenticated> result;
 		int threadId = request.getModel().getInteger("threadId");
-		System.out.println(threadId);
-		result = this.repository.findAuthenticatedNoThread(threadId);
+		result = this.repository.findUserThreadNotInThread(threadId);
+
 		return result;
 
 	}
-
 }

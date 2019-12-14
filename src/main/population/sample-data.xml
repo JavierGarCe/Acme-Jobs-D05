@@ -916,6 +916,8 @@
 	
 	<!--  Thread -->
 	
+	
+	
 	<bean id="thread1" class="acme.entities.threads.Thread">
 		<property name="title" value="Thread 1"/>
 		<property name="moment" value="2018/01/12 07:00"/>
@@ -924,11 +926,11 @@
 				<ref bean="message1" />
 			</list>
 		</property>
-		<property name="authenticateds">
-			<list>
-				<ref bean="employer1Authenticated" />
-			</list>
-		</property>
+	</bean>
+	
+	<bean id="userThread01" class="acme.entities.threads.UserThread">
+		<property name="thread" ref="thread1"/>
+		<property name="authenticated" ref="employer1Authenticated"/>
 	</bean>
 	
 	<bean id="thread2" class="acme.entities.threads.Thread">
@@ -942,13 +944,18 @@
 				<ref bean="message5" />
 			</list>
 		</property>
-		<property name="authenticateds">
-			<list>
-				<ref bean="employer1Authenticated" />
-				<ref bean="worker1Authenticated" />
-				<ref bean="auditorAuthenticated" /> 
-			</list>
-		</property>
+	</bean>
+	<bean id="userThread02" class="acme.entities.threads.UserThread">
+		<property name="thread" ref="thread2"/>
+		<property name="authenticated" ref="employer1Authenticated"/>
+	</bean>
+	<bean id="userThread03" class="acme.entities.threads.UserThread">
+		<property name="thread" ref="thread2"/>
+		<property name="authenticated" ref="worker1Authenticated"/>
+	</bean>
+	<bean id="userThread04" class="acme.entities.threads.UserThread">
+		<property name="thread" ref="thread2"/>
+		<property name="authenticated" ref="auditorAuthenticated"/>
 	</bean>
 	
 	<bean id="thread3" class="acme.entities.threads.Thread">
@@ -959,11 +966,10 @@
 				<ref bean="message6" />
 			</list>
 		</property>
-		<property name="authenticateds">
-			<list>
-				<ref bean="sponsor1Authenticated" />
-			</list>
-		</property>
+	</bean>
+	<bean id="userThread05" class="acme.entities.threads.UserThread">
+		<property name="thread" ref="thread3"/>
+		<property name="authenticated" ref="sponsor1Authenticated"/>
 	</bean>
 	
 </beans>

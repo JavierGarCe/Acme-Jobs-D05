@@ -12,10 +12,14 @@
 	<acme:message code="authenticated.threads.form.label.message"/>
 	</button>
 	<button type="button" onclick="javascript: pushReturnUrl('/authenticated/thread/show?id=${id}');
-	redirect('/authenticated/authenticated/list?id=${id}')" class="btn btn-primary">
+	redirect('/authenticated/user-thread/list?id=${id}')" class="btn btn-primary">
 	<acme:message code="authenticated.threads.form.label.users"/>
 	</button>
 	</jstl:if>
-	<acme:form-submit test="${command == 'create' }" code="authenticated.threads.button.create" action="/authenticated/thread/create" />				
+		<!--  <button type="button" onclick="javascript: pushReturnUrl('/authenticated/thread/show?id=${id}');
+		redirect('/authenticated/thread/create')" class="btn btn-primary">
+		<acme:message code="authenticated.threads.button.create"/>
+		</button> -->
+	<acme:form-submit test="${command == 'create' }" code="authenticated.threads.button.create" action="/authenticated/thread/create"/>
 	<acme:form-return code="authenticated.threads.form.button.return" />
 </acme:form>

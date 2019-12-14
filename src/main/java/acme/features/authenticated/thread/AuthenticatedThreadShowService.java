@@ -1,8 +1,6 @@
 
 package acme.features.authenticated.thread;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -23,12 +21,13 @@ public class AuthenticatedThreadShowService implements AbstractShowService<Authe
 	@Override
 	public boolean authorise(final Request<Thread> request) {
 		assert request != null;
+
 		int idThread = request.getModel().getInteger("id");
-		Thread thread = this.repository.findOneById(idThread);
-		List<Authenticated> authenticateds = (List<Authenticated>) thread.getAuthenticateds();
 		Principal principal = request.getPrincipal();
-		boolean result = authenticateds.stream().filter(x -> x.getUserAccount().getId() == principal.getAccountId()).count() > 0;
-		return result;
+		int authenticatedId = principal.getActiveRoleId();
+		Integer count = this.repository.countNumberUserThreadByAuthenticatedIdAndThreadId(authenticatedId, idThread);
+
+		return count == 1;
 	}
 
 	@Override
