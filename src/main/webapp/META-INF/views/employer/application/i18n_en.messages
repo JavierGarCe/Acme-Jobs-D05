@@ -11,14 +11,15 @@ employer.application.form.label.status.rejected = Rejected
 employer.application.form.label.status.accepted = Accepted
 employer.application.form.button.job = Go to Job
 employer.application.form.button.return = Return
-employer.application.form.label.accept = Accept
-employer.application.form.label.reject = Reject
+employer.application.form.label.update = Update
 
 employer.justification.error.notblank = An application's rejection must be justified
+employer.status.error.notupdated = The application must be accepted or rejected
 
 employer.application.list.label.moment = Moment
 employer.application.list.label.status = Status
 employer.application.list.label.statement = Statement
+employer.application.list.label.reference = Reference
 employer.application.list.button.status = Group by status
 employer.application.list.button.creation = Group by creation moment
 employer.application.list.button.reference = Group by reference

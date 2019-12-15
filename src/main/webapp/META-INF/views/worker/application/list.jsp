@@ -18,6 +18,8 @@
 	<acme:list-column code="worker.application.list.label.moment" path="moment" width="20%"/>
 	<acme:list-column code="worker.application.list.label.status" path="status" width="20%"/>
 	<acme:list-column code="worker.application.list.label.statement" path="statement" width="40%"/>
+	<acme:list-column code="worker.application.list.label.reference" path="reference" width="20%"/>
+	
 </acme:list>
 	<button type="button" onclick="javascript: pushReturnUrl('/worker/application/list-mine?group='); redirect('/worker/application/list-mine?group=creation')" class="btn btn-primary">
 		<acme:message code="worker.application.list.button.creation" />

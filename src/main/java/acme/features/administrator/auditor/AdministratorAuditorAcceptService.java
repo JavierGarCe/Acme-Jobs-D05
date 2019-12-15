@@ -4,6 +4,7 @@ package acme.features.administrator.auditor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import acme.datatypes.ApplicationStatus;
 import acme.entities.requestAuditors.RequestAuditor;
 import acme.entities.roles.Auditor;
 import acme.framework.components.Errors;
@@ -59,7 +60,8 @@ public class AdministratorAuditorAcceptService implements AbstractCreateService<
 		this.repository.save(entity);
 		int idRequest = request.getModel().getInteger("id");
 		RequestAuditor requestAud = this.repository.findRequestAuditorById(idRequest);
-		this.repository.delete(requestAud);
+		requestAud.setStatus(ApplicationStatus.ACCEPTED);
+		this.repository.save(requestAud);
 
 	}
 

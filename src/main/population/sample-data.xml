@@ -925,6 +925,8 @@
 	
 	<!--  Thread -->
 	
+	
+	
 	<bean id="thread1" class="acme.entities.threads.Thread">
 		<property name="title" value="Thread 1"/>
 		<property name="moment" value="2018/01/12 07:00"/>
@@ -933,11 +935,12 @@
 				<ref bean="message1" />
 			</list>
 		</property>
-		<property name="authenticateds">
-			<list>
-				<ref bean="employer1Authenticated" />
-			</list>
-		</property>
+	</bean>
+	
+	<bean id="userThread01" class="acme.entities.threads.UserThread">
+		<property name="thread" ref="thread1"/>
+		<property name="authenticated" ref="employer1Authenticated"/>
+		<property name="creatorThread" value = "true"/>
 	</bean>
 	
 	<bean id="thread2" class="acme.entities.threads.Thread">
@@ -951,13 +954,21 @@
 				<ref bean="message5" />
 			</list>
 		</property>
-		<property name="authenticateds">
-			<list>
-				<ref bean="employer1Authenticated" />
-				<ref bean="worker1Authenticated" />
-				<ref bean="auditorAuthenticated" /> 
-			</list>
-		</property>
+	</bean>
+	<bean id="userThread02" class="acme.entities.threads.UserThread">
+		<property name="thread" ref="thread2"/>
+		<property name="authenticated" ref="employer1Authenticated"/>
+		<property name="creatorThread" value = "true"/>
+	</bean>
+	<bean id="userThread03" class="acme.entities.threads.UserThread">
+		<property name="thread" ref="thread2"/>
+		<property name="authenticated" ref="worker1Authenticated"/>
+		<property name="creatorThread" value = "false"/>
+	</bean>
+	<bean id="userThread04" class="acme.entities.threads.UserThread">
+		<property name="thread" ref="thread2"/>
+		<property name="authenticated" ref="auditorAuthenticated"/>
+		<property name="creatorThread" value = "false"/>
 	</bean>
 	
 	<bean id="thread3" class="acme.entities.threads.Thread">
@@ -968,11 +979,36 @@
 				<ref bean="message6" />
 			</list>
 		</property>
-		<property name="authenticateds">
-			<list>
-				<ref bean="sponsor1Authenticated" />
-			</list>
-		</property>
+	</bean>
+	<bean id="userThread05" class="acme.entities.threads.UserThread">
+		<property name="thread" ref="thread3"/>
+		<property name="authenticated" ref="sponsor1Authenticated"/>
+		<property name="creatorThread" value = "true"/>
 	</bean>
 	
+	<!--  Request-Auditor -->
+	
+	<bean id="requestAuditor1" class="acme.entities.requestAuditors.RequestAuditor">
+		<property name="firm" value="Firm 1"/>
+		<property name="responsabilityStatement" value="Responsability Statement 1"/>
+		<property name="status" value="REJECTED"/>
+		<property name="finished" value="false"/>
+		<property name="authenticated" ref="employer1Authenticated" />
+	</bean>
+	
+	<bean id="requestAuditor2" class="acme.entities.requestAuditors.RequestAuditor">
+		<property name="firm" value="Firm 2"/>
+		<property name="responsabilityStatement" value="Responsability Statement 2"/>
+		<property name="status" value="PENDING"/>
+		<property name="finished" value="false"/>
+		<property name="authenticated" ref="worker1Authenticated" />
+	</bean>
+	
+	<bean id="requestAuditor3" class="acme.entities.requestAuditors.RequestAuditor">
+		<property name="firm" value="Firm 3"/>
+		<property name="responsabilityStatement" value="Responsability Statement 3"/>
+		<property name="status" value="PENDING"/>
+		<property name="finished" value="false"/>
+		<property name="authenticated" ref="employer2Authenticated" />
+	</bean>
 </beans>

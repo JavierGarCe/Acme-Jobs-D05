@@ -4,6 +4,7 @@ package acme.features.authenticated.requestAuditor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import acme.datatypes.ApplicationStatus;
 import acme.entities.requestAuditors.RequestAuditor;
 import acme.entities.roles.Auditor;
 import acme.framework.components.Errors;
@@ -27,10 +28,7 @@ public class AuthenticatedRequestAuditorCreateService implements AbstractCreateS
 	@Override
 	public boolean authorise(final Request<RequestAuditor> request) {
 		assert request != null;
-		Principal principal = request.getPrincipal();
-		Integer userAccountId = principal.getAccountId();
-		Auditor aud = this.repository.findOneAuditorByUserAccountId(userAccountId);
-		return aud == null;
+		return !request.getPrincipal().hasRole(Auditor.class);
 
 	}
 
@@ -39,14 +37,7 @@ public class AuthenticatedRequestAuditorCreateService implements AbstractCreateS
 		assert request != null;
 		assert entity != null;
 		assert errors != null;
-		if (!errors.hasErrors()) {
-			Principal principal = request.getPrincipal();
-			Integer userAccountId = principal.getAccountId();
-			RequestAuditor aud = this.repository.findOneRequestAuditorByUserAccountId(userAccountId);
-			boolean alreadyRequest = aud != null;
-			errors.state(request, !alreadyRequest, "responsabilityStatement", "auditor.error.already-request");
 
-		}
 	}
 
 	@Override
@@ -64,6 +55,8 @@ public class AuthenticatedRequestAuditorCreateService implements AbstractCreateS
 		assert entity != null;
 		assert model != null;
 
+		boolean canShow = this.repository.findOneRequestAuditorNotFinishedByUserAccountId(request.getPrincipal().getAccountId()) != null;
+		model.setAttribute("canShow", canShow);
 		request.unbind(entity, model, "responsabilityStatement", "firm");
 	}
 
@@ -81,7 +74,8 @@ public class AuthenticatedRequestAuditorCreateService implements AbstractCreateS
 		authenticated = this.repository.findOneAuthenticatedByUserAccountId(userAccountId);
 		result = new RequestAuditor();
 		result.setAuthenticated(authenticated);
-
+		result.setStatus(ApplicationStatus.PENDING);
+		result.setFinished(false);
 		return result;
 	}
 

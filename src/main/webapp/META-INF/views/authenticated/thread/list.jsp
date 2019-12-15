@@ -7,4 +7,5 @@
 <acme:list>
 	<acme:list-column code="authenticated.threads.list.label.title" path="title" />
 	<acme:list-column code="authenticated.threads.list.label.moment" path="moment" />	
+	
 </acme:list>

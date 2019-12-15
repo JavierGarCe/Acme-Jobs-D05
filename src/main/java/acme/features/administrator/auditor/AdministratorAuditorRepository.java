@@ -12,7 +12,7 @@ import acme.framework.repositories.AbstractRepository;
 @Repository
 public interface AdministratorAuditorRepository extends AbstractRepository {
 
-	@Query("select a from RequestAuditor a where a.id = ?1")
+	@Query("select a from RequestAuditor a where a.id = ?1 and a.status = 0")
 	RequestAuditor findRequestAuditorById(int id);
 
 	@Query("select a from RequestAuditor a")
