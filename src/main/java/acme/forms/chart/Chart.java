@@ -16,4 +16,8 @@ public class Chart implements Serializable {
 	Object[]					jobsByStatusRatio;
 	Object[]					applicationsByStatusRatio;
 	Object[]					sectores;
+	Object[]					pendingApplicationsLastMonth;
+	Object[]					acceptedApplicationsLastMonth;
+	Object[]					rejectedApplicationsLastMonth;
+	Object[]					applicationsLastMonth;
 }

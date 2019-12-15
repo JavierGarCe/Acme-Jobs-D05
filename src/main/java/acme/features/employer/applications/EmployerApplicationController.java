@@ -24,18 +24,14 @@ public class EmployerApplicationController extends AbstractController<Employer, 
 	private EmployerApplicationShowService		showService;
 
 	@Autowired
-	private EmployerApplicationAcceptService	acceptService;
-
-	@Autowired
-	private EmployerApplicationRejectService	rejectService;
+	private EmployerApplicationUpdateService	updateService;
 
 
 	@PostConstruct
 	private void initialise() {
 		super.addCustomCommand(CustomCommand.LIST_MINE, BasicCommand.LIST, this.listMineService);
 		super.addBasicCommand(BasicCommand.SHOW, this.showService);
-		super.addCustomCommand(CustomCommand.ACCEPT, BasicCommand.UPDATE, this.acceptService);
-		super.addCustomCommand(CustomCommand.REJECT, BasicCommand.UPDATE, this.rejectService);
+		super.addBasicCommand(BasicCommand.UPDATE, this.updateService);
 	}
 
 }

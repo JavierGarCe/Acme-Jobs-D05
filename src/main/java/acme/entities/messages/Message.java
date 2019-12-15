@@ -41,7 +41,6 @@ public class Message extends DomainEntity {
 	private String				body;
 
 	// Relationships -----------------------------------------------------------
-
 	@NotNull
 	@Valid
 	@ManyToOne(optional = false)

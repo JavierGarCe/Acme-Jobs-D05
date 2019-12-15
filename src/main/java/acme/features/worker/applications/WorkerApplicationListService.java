@@ -32,16 +32,26 @@ public class WorkerApplicationListService implements AbstractListService<Worker,
 		assert entity != null;
 		assert model != null;
 
-		request.unbind(entity, model, "moment", "status", "statement");
+		request.unbind(entity, model, "moment", "status", "statement", "reference");
 	}
 
 	@Override
 	public Collection<Application> findMany(final Request<Application> request) {
 		assert request != null;
-
+		String group;
 		Collection<Application> result;
 		int id = request.getPrincipal().getActiveRoleId();
-		result = this.repository.findManyByWorkerId(id);
+		group = request.getModel().getString("group");
+
+		if (group == "creation") {
+			result = this.repository.findManyByWorkerIdGroupByMoment(id);
+		} else if (group == "reference") {
+			result = this.repository.findManyByWorkerIdGroupByReference(id);
+		} else if (group == "status") {
+			result = this.repository.findManyByWorkerIdGroupByStatus(id);
+		} else {
+			result = this.repository.findManyByWorkerId(id);
+		}
 
 		return result;
 	}

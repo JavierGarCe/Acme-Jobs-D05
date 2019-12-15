@@ -365,7 +365,7 @@
   <!-- Customization parameters -->
 	<bean id="customization" class="acme.entities.customization.Customization">
 		<property name="threshold" value="1.00"/>
-		<property name="spamword" value="sex, hard core, viagra, cialis, nigeria, you´ve won, million dollar, sexo, duro, has ganado, millón de dolares"/>
+		<property name="spamword" value="sex, hard core, viagra, cialis, nigeria, you've won, million dollar, sexo, duro, has ganado, millón de dolares"/>
 	</bean>
   
   <!-- Sponsors -->
@@ -417,7 +417,6 @@
 	</bean>
 	<bean name="sponsor2Sponsor" class="acme.entities.roles.Sponsor">
 		<property name="organisationName" value="FaKeOrganisation"/>
-		<property name="creditCard" value="6011412594170202"/>
 		<property name="userAccount" ref="sponsor2UserAccount" />
 	</bean>	
 	<bean name="sponsor2Authenticated" class="acme.framework.entities.Authenticated">
@@ -631,47 +630,47 @@
 	<bean id="duty01" class="acme.entities.jobs.Duty">
 		<property name="title" value="duty01"/>
 		<property name="description" value="duty01"/>
-		<property name="percentage" value="1"/>
+		<property name="percentage" value="10"/>
 	</bean>
 	<bean id="duty02" class="acme.entities.jobs.Duty">
 		<property name="title" value="duty02"/>
 		<property name="description" value="duty02"/>
-		<property name="percentage" value="2"/>
+		<property name="percentage" value="20"/>
 	</bean>
 	<bean id="duty03" class="acme.entities.jobs.Duty">
 		<property name="title" value="duty03"/>
 		<property name="description" value="duty03"/>
-		<property name="percentage" value="3"/>
+		<property name="percentage" value="46"/>
 	</bean>
 	<bean id="duty04" class="acme.entities.jobs.Duty">
 		<property name="title" value="duty04"/>
 		<property name="description" value="duty04"/>
-		<property name="percentage" value="4"/>
+		<property name="percentage" value="54"/>
 	</bean>
 	<bean id="duty05" class="acme.entities.jobs.Duty">
 		<property name="title" value="duty05"/>
 		<property name="description" value="duty05"/>
-		<property name="percentage" value="5"/>
+		<property name="percentage" value="46"/>
 	</bean>
 	<bean id="duty06" class="acme.entities.jobs.Duty">
 		<property name="title" value="duty06"/>
 		<property name="description" value="duty06"/>
-		<property name="percentage" value="6"/>
+		<property name="percentage" value="10"/>
 	</bean>
 	<bean id="duty07" class="acme.entities.jobs.Duty">
 		<property name="title" value="duty07"/>
 		<property name="description" value="duty07"/>
-		<property name="percentage" value="7"/>
+		<property name="percentage" value="70"/>
 	</bean>
 	<bean id="duty08" class="acme.entities.jobs.Duty">
 		<property name="title" value="duty08"/>
 		<property name="description" value="duty08"/>
-		<property name="percentage" value="8"/>
+		<property name="percentage" value="30"/>
 	</bean>
 	<bean id="duty09" class="acme.entities.jobs.Duty">
 		<property name="title" value="duty09"/>
 		<property name="description" value="duty09"/>
-		<property name="percentage" value="9"/>
+		<property name="percentage" value="90"/>
 	</bean>
 	<bean id="duty10" class="acme.entities.jobs.Duty">
 		<property name="title" value="duty10"/>
@@ -841,7 +840,7 @@
 		<property name="worker" ref="worker1Worker"/>
 		<property name="job" ref="job02"/>
 	</bean>
-	
+
 	<bean id="application2" class="acme.entities.applications.Application">
 		<property name="reference" value="EEEE-JJJN:WWWX"/>
 		<property name="moment" value="2019/10/09 15:00"/>
@@ -852,7 +851,17 @@
 		<property name="worker" ref="worker2Worker"/>
 		<property name="job" ref="job05"/>
 	</bean>
-	
+		<bean id="application4" class="acme.entities.applications.Application">
+		<property name="reference" value="EEEE-JJJZ:WWWX"/>
+		<property name="moment" value="2019/10/08 15:00"/>
+		<property name="status" value="PENDING"></property>
+		<property name="statement" value="Gestionar base de datos2"/>
+		<property name="skills" value="Responsability and Determination2"/>
+		<property name="qualifications" value="Gestion de Bases de Datos (N3) and Gestion de Equipos Informáticos (N3)" />
+		<property name="worker" ref="worker2Worker"/>
+		<property name="job" ref="job05"/>
+
+	</bean>
 		<bean id="application3" class="acme.entities.applications.Application">
 		<property name="reference" value="EEEE-JJJM:WWWX"/>
 		<property name="moment" value="2019/11/24 18:00"/>
@@ -977,4 +986,29 @@
 		<property name="creatorThread" value = "true"/>
 	</bean>
 	
+	<!--  Request-Auditor -->
+	
+	<bean id="requestAuditor1" class="acme.entities.requestAuditors.RequestAuditor">
+		<property name="firm" value="Firm 1"/>
+		<property name="responsabilityStatement" value="Responsability Statement 1"/>
+		<property name="status" value="REJECTED"/>
+		<property name="finished" value="false"/>
+		<property name="authenticated" ref="employer1Authenticated" />
+	</bean>
+	
+	<bean id="requestAuditor2" class="acme.entities.requestAuditors.RequestAuditor">
+		<property name="firm" value="Firm 2"/>
+		<property name="responsabilityStatement" value="Responsability Statement 2"/>
+		<property name="status" value="PENDING"/>
+		<property name="finished" value="false"/>
+		<property name="authenticated" ref="worker1Authenticated" />
+	</bean>
+	
+	<bean id="requestAuditor3" class="acme.entities.requestAuditors.RequestAuditor">
+		<property name="firm" value="Firm 3"/>
+		<property name="responsabilityStatement" value="Responsability Statement 3"/>
+		<property name="status" value="PENDING"/>
+		<property name="finished" value="false"/>
+		<property name="authenticated" ref="employer2Authenticated" />
+	</bean>
 </beans>
