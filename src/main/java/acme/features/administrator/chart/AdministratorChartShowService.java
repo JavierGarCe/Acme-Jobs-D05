@@ -1,6 +1,10 @@
 
 package acme.features.administrator.chart;
 
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -32,7 +36,7 @@ public class AdministratorChartShowService implements AbstractShowService<Admini
 		assert entity != null;
 		assert model != null;
 
-		request.unbind(entity, model, "companiesBySector", "investorsBySector", "jobsByStatusRatio", "applicationsByStatusRatio");
+		request.unbind(entity, model, "companiesBySector", "investorsBySector", "jobsByStatusRatio", "applicationsByStatusRatio", "applicationsLastMonth");
 
 	}
 
@@ -45,6 +49,14 @@ public class AdministratorChartShowService implements AbstractShowService<Admini
 		res.setInvestorsBySector(this.repository.investorsBySector());
 		res.setJobsByStatusRatio(this.repository.jobsByStatusRatio());
 		res.setApplicationsByStatusRatio(this.repository.applicationsByStatusRatio());
+
+		Calendar cal = new GregorianCalendar();
+		Date nowDate = new Date(System.currentTimeMillis());
+		cal.setTime(nowDate);
+		cal.add(Calendar.DATE, -28); //Restar 4 semanas
+		res.setApplicationsLastMonth(this.repository.findApplicationsLastMonthByDayAndStatus(cal.getTime()));
+		System.out.println(res.getApplicationsLastMonth().length);
+
 		return res;
 
 	}
