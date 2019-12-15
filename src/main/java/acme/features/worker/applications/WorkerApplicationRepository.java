@@ -23,10 +23,22 @@ public interface WorkerApplicationRepository extends AbstractRepository {
 	@Query("select j.id from Application a join a.job j where a.id= ?1")
 	int findId(int id);
 
+	@Query("select a from Application a where a.worker.id = ?1 group by a.reference")
+	Collection<Application> findManyByWorkerIdGroupByReference(int WorkerId);
+
+	@Query("select a from Application a where a.worker.id = ?1 group by a.moment")
+	Collection<Application> findManyByWorkerIdGroupByMoment(int WorkerId);
+
+	@Query("select a from Application a where a.worker.id = ?1 group by a.status")
+	Collection<Application> findManyByWorkerIdGroupByStatus(int WorkerId);
+
 	@Query("select j from Job j where j.id = ?1")
 	Job findJobById(int id);
 
 	@Query("select w from Worker w where w.id = ?1")
 	Worker findWorkerById(int id);
+
+	@Query("select a from Application a where a.reference = ?1")
+	Application findOneByReference(String reference);
 
 }

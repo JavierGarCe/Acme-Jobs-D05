@@ -55,11 +55,18 @@ public class AuthenticatedSponsorCreateService implements AbstractCreateService<
 		assert errors != null;
 		String creditCard;
 		Boolean valida = true;
+		Boolean numerico = true;
 		if (!errors.hasErrors("creditCard") && !entity.getCreditCard().isEmpty()) {
+			creditCard = entity.getCreditCard();
+			numerico = AuthenticatedSponsorCreateService.isNumeric(creditCard);
+
+		}
+		if (!errors.hasErrors("creditCard") && !entity.getCreditCard().isEmpty() && numerico) {
 			creditCard = entity.getCreditCard();
 			valida = AuthenticatedSponsorCreateService.Check(creditCard.trim());
 		}
 
+		errors.state(request, numerico, "creditCard", "authenticated.message.error.creditCardNumero");
 		errors.state(request, valida, "creditCard", "authenticated.message.error.creditCard");
 	}
 
@@ -118,24 +125,6 @@ public class AuthenticatedSponsorCreateService implements AbstractCreateService<
 		}
 	}
 
-	public static boolean verificacionluhn(final int[] digits) {
-		int sum = 0;
-		int length = digits.length;
-		for (int i = 0; i < length; i++) {
-			// sacar los digitos en orden inverso
-			int digit = digits[length - i - 1];
-
-			// cada segundo número se multiplica por 2
-			if (i % 2 == 1) {
-				digit = digit * 2;
-			}
-			if (digit > 9) {
-				digit = digit - 9;
-			}
-			sum = sum + digit;
-		}
-		return sum % 10 == 0;
-	}
 	public static boolean Check(final String ccNumber)
 
 	{
@@ -154,6 +143,19 @@ public class AuthenticatedSponsorCreateService implements AbstractCreateService<
 			alternate = !alternate;
 		}
 		return sum % 10 == 0;
+	}
+	public static boolean isNumeric(final String cadena) {
+
+		boolean resultado;
+
+		try {
+			Long.parseLong(cadena);
+			resultado = true;
+		} catch (NumberFormatException excepcion) {
+			resultado = false;
+		}
+
+		return resultado;
 	}
 
 }

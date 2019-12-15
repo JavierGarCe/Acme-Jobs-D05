@@ -5,7 +5,6 @@ import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.URL;
 
@@ -32,9 +31,8 @@ public abstract class Banner extends DomainEntity {
 	private String				targetUrl;
 
 	//RelationShips-------------------------------------
-	@NotNull
 	@Valid
-	@ManyToOne(optional = false)
+	@ManyToOne(optional = true)
 	private Sponsor				sponsor;
 
 }

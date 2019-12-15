@@ -6,3 +6,4 @@ authenticated.sponsor.form.button.return = Volver
 authenticated.sponsor.form.title.create = Hazte patrocinador
 authenticated.sponsor.form.title.update = Actualiza tus datos de patrocinador
 authenticated.message.error.creditCard = El numero de la tarjeta de crédito está mal
+authenticated.message.error.creditCardNumero = No se ha introducido un numero en la tarjeta de credito. No dejes espacios entre los numeros.
