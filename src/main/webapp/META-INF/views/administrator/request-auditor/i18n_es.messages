@@ -2,3 +2,4 @@ administrator.auditor.form.label.responsabilityStatement = Declaración de respo
 administrator.auditor.form.label.firm = Firma
 administrator.auditor.form.button.accept = Aceptar la solicitud
 administrator.auditor.form.button.return = Volver
+administrator.auditor.form.label.username = User

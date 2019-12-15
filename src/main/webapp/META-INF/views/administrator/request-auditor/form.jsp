@@ -6,6 +6,7 @@
 <acme:form>
 	<acme:form-textarea code="administrator.auditor.form.label.firm" path="firm"/>
 	<acme:form-textarea code="administrator.auditor.form.label.responsabilityStatement" path="responsabilityStatement"/>
+	<acme:form-textarea code="administrator.auditor.form.label.username" path="authenticated.userAccount.username"/>
 	
 	<acme:form-submit code="administrator.auditor.form.button.accept" action="/administrator/auditor/accept?id=${id}"/>
 	<acme:form-return code="administrator.auditor.form.button.return"/>

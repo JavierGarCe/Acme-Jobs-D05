@@ -72,15 +72,15 @@ public class SponsorCommercialBannerCreateService implements AbstractCreateServi
 		assert errors != null;
 
 		Customization customization = this.repository.findCustomization();
-		String[] spamWords = customization.getSpamword().toLowerCase().replaceAll("\\s", "").split(",");
+		String[] spamWords = customization.getSpamword().toLowerCase().split(",");
 		Double threshold = customization.getThreshold();
 
 		if (!errors.hasErrors("picture")) {
-			String picture = entity.getPicture().toLowerCase().replaceAll("\\s", "");
+			String picture = entity.getPicture().toLowerCase();
 			Double numberLetters = new Double(picture.length());
 			Double numberSpamWordsInLetters = 0.0;
 			for (String s : spamWords) {
-				if (picture.contains(s)) {
+				if (picture.contains(s.trim())) {
 					numberSpamWordsInLetters += s.length();
 				}
 			}
@@ -90,11 +90,11 @@ public class SponsorCommercialBannerCreateService implements AbstractCreateServi
 		}
 
 		if (!errors.hasErrors("slogan")) {
-			String slogan = entity.getSlogan().toLowerCase().replaceAll("\\s", "");
+			String slogan = entity.getSlogan().toLowerCase();
 			Double numberLetters = new Double(slogan.length());
 			Double numberSpamWordsInLetters = 0.0;
 			for (String s : spamWords) {
-				if (slogan.contains(s)) {
+				if (slogan.contains(s.trim())) {
 					numberSpamWordsInLetters += s.length();
 				}
 			}
@@ -102,7 +102,6 @@ public class SponsorCommercialBannerCreateService implements AbstractCreateServi
 			Boolean notSpam = percentageSpam < threshold;
 			errors.state(request, notSpam, "slogan", "error.CommercialBanner.input.spam");
 		}
-
 	}
 
 	@Override
