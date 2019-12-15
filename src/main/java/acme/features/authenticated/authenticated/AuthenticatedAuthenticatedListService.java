@@ -6,6 +6,7 @@ import java.util.Collection;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import acme.entities.threads.UserThread;
 import acme.framework.components.Model;
 import acme.framework.components.Request;
 import acme.framework.entities.Authenticated;
@@ -21,8 +22,13 @@ public class AuthenticatedAuthenticatedListService implements AbstractListServic
 	@Override
 	public boolean authorise(final Request<Authenticated> request) {
 		assert request != null;
-		// TODO hay que ver que exista un hilo con la id dada y que yo sea su propietario?
-		return true;
+		// TODO solo puedo listar los usuarios que no estan en un hilo si soy el propietario del hilo
+		int threadId = request.getModel().getInteger("threadId");
+		int meId = request.getPrincipal().getActiveRoleId();
+		UserThread userThread = this.repository.findOneByThreadIdAndAuthenticatedId(threadId, meId);
+		Boolean res = userThread.getCreatorThread();
+
+		return res;
 	}
 
 	@Override

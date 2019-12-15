@@ -22,17 +22,14 @@ public class AuthenticatedUsersThreadListService implements AbstractListService<
 	@Override
 	public boolean authorise(final Request<UserThread> request) {
 		assert request != null;
+		// Solo puedo listar los usuarios de un hilo si soy el dueño de ese hilo
+		int threadId = request.getModel().getInteger("id");
+		int meId = request.getPrincipal().getActiveRoleId();
+		UserThread userThread = this.repository.findOneByThreadIdAndAuthenticatedId(threadId, meId);
+		Boolean res = userThread.getCreatorThread();
 
-		/*
-		 * int idThread = request.getModel().getInteger("id");
-		 * Thread thread = this.repository.findOneById(idThread);
-		 * List<Authenticated> authenticateds = (List<Authenticated>) thread.getAuthenticateds();
-		 * Principal principal = request.getPrincipal();
-		 * boolean result = authenticateds.stream().filter(x -> x.getUserAccount().getId() == principal.getAccountId()).count() > 0;
-		 * return result;
-		 */
+		return res;
 
-		return true;
 	}
 
 	@Override

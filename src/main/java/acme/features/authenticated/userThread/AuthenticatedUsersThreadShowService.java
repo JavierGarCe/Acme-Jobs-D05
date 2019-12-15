@@ -20,8 +20,15 @@ public class AuthenticatedUsersThreadShowService implements AbstractShowService<
 	@Override
 	public boolean authorise(final Request<UserThread> request) {
 		assert request != null;
-		// TODO
-		return true;
+		// Solo puedes ver un usuario de un hilo si tu eres el creador de dicho hilo
+		int userThreadId = request.getModel().getInteger("id");
+		UserThread userThread = this.repository.findOneUserThreadById(userThreadId);
+		int threadId = userThread.getThread().getId();
+		int meId = request.getPrincipal().getActiveRoleId();
+		UserThread userThread2 = this.repository.findOneByThreadIdAndAuthenticatedId(threadId, meId);
+		Boolean res = userThread2.getCreatorThread();
+
+		return res;
 	}
 
 	@Override

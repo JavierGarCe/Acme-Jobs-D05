@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.entities.threads.Thread;
+import acme.entities.threads.UserThread;
 import acme.framework.components.Model;
 import acme.framework.components.Request;
 import acme.framework.entities.Authenticated;
@@ -36,6 +37,15 @@ public class AuthenticatedThreadShowService implements AbstractShowService<Authe
 		assert entity != null;
 		assert model != null;
 
+		
+		//Comprobramos si el usuario es el propietario del hilo para mostrarle posteriormente en el form el boton de ver usuarios o no
+		int idThread = request.getModel().getInteger("id");
+		Principal principal = request.getPrincipal();
+		int authenticatedId = principal.getActiveRoleId();
+		UserThread userThread = this.repository.findOneByThreadIdAndAuthenticatedId(idThread, authenticatedId);
+		Boolean hasAccess = userThread.getCreatorThread();
+		model.setAttribute("hasAccess", hasAccess);
+		
 		request.unbind(entity, model, "title", "moment");
 	}
 
