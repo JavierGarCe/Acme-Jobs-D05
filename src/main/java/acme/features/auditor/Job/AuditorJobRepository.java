@@ -7,7 +7,6 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import acme.entities.jobs.Job;
-import acme.entities.roles.Auditor;
 import acme.framework.repositories.AbstractRepository;
 
 @Repository
@@ -21,9 +20,6 @@ public interface AuditorJobRepository extends AbstractRepository {
 
 	@Query("select j from Job j where j not in (select b.job from AuditRecord b where b.auditor.id = ?1) and j.deadline > CURRENT_TIMESTAMP and j.status=1")
 	Collection<Job> findManyByAuditorIdNoMine(int AuditorId);
-
-	@Query("select b.auditor from AuditRecord b where b.job = ?1")
-	Collection<Auditor> findManyAuditorsByJobId(int JobId);
 
 	@Query("select count(a) from AuditRecord a where a.job.id=?1 and a.auditor.id = ?2")
 	Integer countMyAuditRecords(int jobId, int auditorId);
