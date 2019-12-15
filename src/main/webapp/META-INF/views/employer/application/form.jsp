@@ -57,11 +57,12 @@
 	<acme:form-textarea code="employer.application.form.label.justification" path="justification" readonly="true"/>
 	</jstl:if>
 	
-
-	<button type="button" class="btn btn-primary"
+	<jstl:if test="${command == 'show'}">
+	<button type="button" class="btn btn-primary" 
 		onclick="javascript: pushReturnUrl('/employer/application/show?id=${id}'); redirect('/employer/job/show?id=${idJob}')">
 		<acme:message code="employer.application.form.button.job" />
 	</button>
+	</jstl:if>
 	<acme:form-submit test="${status == 'PENDING'||status=='REJECTED'&&justification==''}" code="employer.application.form.label.update" action="/employer/application/update"/>
 
 	<acme:form-return code="employer.application.form.button.return" />
