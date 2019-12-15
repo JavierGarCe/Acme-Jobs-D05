@@ -22,7 +22,13 @@ public class AuthenticatedUserThreadDeleteService implements AbstractDeleteServi
 	public boolean authorise(final Request<UserThread> request) {
 		assert request != null;
 		// TODO solo podra borrar a un usuario de un hilo si es su hilo
-		return true;
+		int userThreadId = request.getModel().getInteger("id");
+		UserThread userThread = this.repository.findOneUserThreadById(userThreadId);
+		int threadId = userThread.getThread().getId();
+		int id = request.getPrincipal().getActiveRoleId();
+		UserThread userThread2 = this.repository.findOneByThreadIdAndAuthenticatedId(threadId, id);
+		boolean res = userThread2.getCreatorThread();
+		return res;
 	}
 
 	@Override
@@ -61,6 +67,13 @@ public class AuthenticatedUserThreadDeleteService implements AbstractDeleteServi
 		assert request != null;
 		assert entity != null;
 		assert errors != null;
+
+		int threadId = request.getModel().getInteger("id");
+		UserThread userThread = this.repository.findOneUserThreadById(threadId);
+		int authenticatedId = userThread.getAuthenticated().getId();
+		int id = request.getPrincipal().getActiveRoleId();
+		boolean sameUser = id == authenticatedId;
+		errors.state(request, !sameUser, "authenticated.userAccount.username", "authenticated.userThread.delete.creatorThread");
 
 		//ALGO MAS?
 	}

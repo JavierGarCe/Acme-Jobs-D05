@@ -23,6 +23,9 @@ public interface AuthenticatedUsersThreadRepository extends AbstractRepository {
 	@Query("select ut from UserThread ut where ut.id = ?1")
 	UserThread findOneUserThreadById(int id);
 
+	@Query("select ut.thread from UserThread ut where ut.id = ?1")
+	Thread findThreadByUserThreadId(int id);
+
 	@Query("select a from Authenticated a where a.id = ?1")
 	Authenticated findOneAuthenticatedById(int id);
 
