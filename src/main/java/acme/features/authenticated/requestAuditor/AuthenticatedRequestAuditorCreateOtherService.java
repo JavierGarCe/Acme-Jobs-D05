@@ -15,7 +15,7 @@ import acme.framework.entities.Principal;
 import acme.framework.services.AbstractCreateService;
 
 @Service
-public class AuthenticatedRequestAuditorCreateService implements AbstractCreateService<Authenticated, RequestAuditor> {
+public class AuthenticatedRequestAuditorCreateOtherService implements AbstractCreateService<Authenticated, RequestAuditor> {
 
 	// Internal state ---------------------------------------------------------
 
@@ -28,7 +28,9 @@ public class AuthenticatedRequestAuditorCreateService implements AbstractCreateS
 	@Override
 	public boolean authorise(final Request<RequestAuditor> request) {
 		assert request != null;
-		return !request.getPrincipal().hasRole(Auditor.class);
+		RequestAuditor requestAud = this.repository.findOneRequestAuditorNotFinishedByUserAccountId(request.getPrincipal().getAccountId());
+
+		return !request.getPrincipal().hasRole(Auditor.class) && requestAud != null && requestAud.getStatus() == ApplicationStatus.REJECTED;
 
 	}
 
@@ -55,8 +57,6 @@ public class AuthenticatedRequestAuditorCreateService implements AbstractCreateS
 		assert entity != null;
 		assert model != null;
 
-		boolean canShow = this.repository.findOneRequestAuditorNotFinishedByUserAccountId(request.getPrincipal().getAccountId()) != null;
-		model.setAttribute("canShow", canShow);
 		request.unbind(entity, model, "responsabilityStatement", "firm");
 	}
 
@@ -83,6 +83,10 @@ public class AuthenticatedRequestAuditorCreateService implements AbstractCreateS
 	public void create(final Request<RequestAuditor> request, final RequestAuditor entity) {
 		assert request != null;
 		assert entity != null;
+
+		RequestAuditor requestAud = this.repository.findOneRequestAuditorNotFinishedByUserAccountId(request.getPrincipal().getAccountId());
+		requestAud.setFinished(true);
+		this.repository.save(requestAud);
 		this.repository.save(entity);
 	}
 }

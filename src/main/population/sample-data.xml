@@ -975,4 +975,29 @@
 		</property>
 	</bean>
 	
+	<!--  Request-Auditor -->
+	
+	<bean id="requestAuditor1" class="acme.entities.requestAuditors.RequestAuditor">
+		<property name="firm" value="Firm 1"/>
+		<property name="responsabilityStatement" value="Responsability Statement 1"/>
+		<property name="status" value="REJECTED"/>
+		<property name="finished" value="false"/>
+		<property name="authenticated" ref="employer1Authenticated" />
+	</bean>
+	
+	<bean id="requestAuditor2" class="acme.entities.requestAuditors.RequestAuditor">
+		<property name="firm" value="Firm 2"/>
+		<property name="responsabilityStatement" value="Responsability Statement 2"/>
+		<property name="status" value="PENDING"/>
+		<property name="finished" value="false"/>
+		<property name="authenticated" ref="worker1Authenticated" />
+	</bean>
+	
+	<bean id="requestAuditor3" class="acme.entities.requestAuditors.RequestAuditor">
+		<property name="firm" value="Firm 3"/>
+		<property name="responsabilityStatement" value="Responsability Statement 3"/>
+		<property name="status" value="PENDING"/>
+		<property name="finished" value="false"/>
+		<property name="authenticated" ref="employer2Authenticated" />
+	</bean>
 </beans>
