@@ -6,6 +6,7 @@ import java.util.Date;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import acme.datatypes.Status;
 import acme.entities.auditRecords.AuditRecord;
 import acme.entities.roles.Auditor;
 import acme.framework.components.Errors;
@@ -28,7 +29,7 @@ public class AuditorAuditRecordUpdateService implements AbstractUpdateService<Au
 		int id = request.getModel().getInteger("id");
 		AuditRecord a = this.repository.findOneAuditRecordById(id);
 		boolean res = a.getAuditor().getId() == principal.getActiveRoleId();
-		return res;
+		return res && a.getStatus().equals(Status.DRAFT);
 	}
 
 	@Override
