@@ -16,16 +16,21 @@ employer.job.form.label.status.draft = Borrador
 employer.job.form.label.status.published = Publicado
 employer.job.form.button.return = Volver
 employer.job.button.create = Crear
+employer.job.button.update = Actualizar
+employer.job.button.delete = Borrar
 
 employer.job.list.label.title = Título
 employer.job.list.label.salary = Salario
 employer.job.list.label.deadline = Fecha límite
 
 master.menu.employer.listAuditRecords = Registro de auditorías
+master.menu.employer.notUpdate = Este trabajo no se puede actualizar porque está guardado en modo publicado.
+master.menu.employer.notDelete = Este trabajo no se puede eliminar porque uno o más trabajadores lo han solicitado.
 
-employer.job.error.not-future-deadline = La deadline debe estar en el futuro
+employer.job.error.spam = La entrada es considerada spam y no se puede guardar en modo publicado
+employer.reference.error.duplicated = La referencia debe ser única
+employer.job.error.not-future-deadline = La fecha límite debe estar en el futuro
 employer.job.error.not-positive-salary = La cantidad del salario debe ser mayor de 0
 employer.job.error.not-EUR-currency = La moneda debe ser EUR
 employer.job.error.not-draft-job = El trabajo se debe crear en modo borrador
-
-employer.job.form.label.create.duty = Añadir tarea
+employer.job.error.non-fullWorkload-job = Las tareas deben sumar el 100% de la carga de trabajo semanal para guardar en modo publicado 

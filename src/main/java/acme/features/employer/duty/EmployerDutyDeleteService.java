@@ -6,6 +6,7 @@ import java.util.Collection;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import acme.datatypes.Status;
 import acme.entities.jobs.Duty;
 import acme.entities.jobs.Job;
 import acme.entities.roles.Employer;
@@ -13,22 +14,35 @@ import acme.framework.components.Errors;
 import acme.framework.components.Model;
 import acme.framework.components.Request;
 import acme.framework.entities.Principal;
-import acme.framework.services.AbstractCreateService;
+import acme.framework.services.AbstractDeleteService;
 
 @Service
-public class EmployerDutyCreateController implements AbstractCreateService<Employer, Duty> {
+public class EmployerDutyDeleteService implements AbstractDeleteService<Employer, Duty> {
 
 	@Autowired
-	private EmployerDutyRepository repository;
+	EmployerDutyRepository repository;
 
 
 	@Override
 	public boolean authorise(final Request<Duty> request) {
 		assert request != null;
-		int jobId = request.getModel().getInteger("jobId");
-		int employerId = this.repository.findEmployerIdByJobId(jobId);
-		Principal principal = request.getPrincipal();
-		return employerId == principal.getActiveRoleId();
+
+		boolean result;
+		int id;
+		Integer jobId;
+		Job job;
+		Employer employer;
+		Principal principal;
+
+		id = request.getModel().getInteger("id");
+		jobId = this.repository.findJobIdByDutyId(id);
+		assert jobId != null;
+		job = this.repository.findOneJobById(jobId);
+		employer = job.getEmployer();
+		principal = request.getPrincipal();
+		result = employer.getUserAccount().getId() == principal.getAccountId() && job.getStatus().equals(Status.DRAFT);
+
+		return result;
 	}
 
 	@Override
@@ -50,11 +64,16 @@ public class EmployerDutyCreateController implements AbstractCreateService<Emplo
 	}
 
 	@Override
-	public Duty instantiate(final Request<Duty> request) {
+	public Duty findOne(final Request<Duty> request) {
 		assert request != null;
-		Duty duty;
-		duty = new Duty();
-		return duty;
+
+		Duty result;
+		int id;
+
+		id = request.getModel().getInteger("id");
+		result = this.repository.findOneById(id);
+
+		return result;
 	}
 
 	@Override
@@ -66,16 +85,17 @@ public class EmployerDutyCreateController implements AbstractCreateService<Emplo
 	}
 
 	@Override
-	public void create(final Request<Duty> request, final Duty entity) {
+	public void delete(final Request<Duty> request, final Duty entity) {
 		assert request != null;
 		assert entity != null;
 
-		int jobId = request.getModel().getInteger("jobId");
+		Integer id = request.getModel().getInteger("id");
+		Integer jobId = this.repository.findJobIdByDutyId(id);
 		Job job = this.repository.findOneJobById(jobId);
 		Collection<Duty> duties = job.getDescriptor().getDuties();
-		duties.add(entity);
-		this.repository.save(entity);
+		duties.remove(entity);
 		this.repository.save(job);
+		this.repository.delete(entity);
 	}
 
 }

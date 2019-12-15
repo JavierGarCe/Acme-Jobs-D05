@@ -71,6 +71,10 @@ public class EmployerJobCreateService implements AbstractCreateService<Employer,
 
 		Calendar calendar;
 		Date present;
+
+		boolean isDuplicated = this.repository.findOneByReference(entity.getReference()) != null;
+		errors.state(request, !isDuplicated, "reference", "employer.reference.error.duplicated");
+
 		if (!errors.hasErrors("deadline")) {
 			calendar = new GregorianCalendar();
 			present = calendar.getTime();
@@ -85,7 +89,7 @@ public class EmployerJobCreateService implements AbstractCreateService<Employer,
 			errors.state(request, isEUR, "salary", "employer.job.error.not-EUR-currency");
 		}
 		Status status = entity.getStatus();
-		if (!errors.hasErrors("salary")) {
+		if (!errors.hasErrors("status")) {
 			boolean isDraft = status.equals(Status.DRAFT);
 			errors.state(request, isDraft, "status", "employer.job.error.not-draft-job");
 		}
