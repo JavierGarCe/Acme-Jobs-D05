@@ -29,7 +29,7 @@ public class SponsorCommercialBannerUpdateService implements AbstractUpdateServi
 		CommercialBanner banner = this.repository.findOneCommercialBannerById(CommercialBannerId);
 		int sponsorId = principal.getActiveRoleId();
 		Sponsor sponsor = this.repository.findSponsorById(sponsorId);
-		boolean hasCreditCard = sponsor.getCreditCard() != null;
+		boolean hasCreditCard = !sponsor.getCreditCard().isEmpty();
 
 		return banner.getSponsor().getId() == principal.getActiveRoleId() && hasCreditCard;
 	}

@@ -33,9 +33,6 @@
 	<acme:form-money code="employer.job.form.label.salary" path="salary" />
 	<acme:form-moment code="employer.job.form.label.deadline" path="deadline" />
 	<acme:form-url code="employer.job.form.label.moreInfo" path="moreInfo" />
-	<jstl:if test="${command == 'show' }">
-	<acme:form-textbox  code="employer.job.form.label.employer.name" path="employer.userAccount.username" readonly="true"/>
-	</jstl:if>
 	<acme:form-panel code="employer.job.form.label.descriptor">
 		<acme:form-textarea code="employer.job.form.label.descriptor.description" path="descriptor.description" />
 	</acme:form-panel>

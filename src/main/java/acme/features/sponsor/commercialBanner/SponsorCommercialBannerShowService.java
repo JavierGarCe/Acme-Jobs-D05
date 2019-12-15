@@ -43,7 +43,7 @@ public class SponsorCommercialBannerShowService implements AbstractShowService<S
 		Principal principal = request.getPrincipal();
 		int sponsorId = principal.getActiveRoleId();
 		Sponsor sponsor = this.repository.findSponsorById(sponsorId);
-		boolean hasCreditCard = sponsor.getCreditCard() != null;
+		boolean hasCreditCard = !sponsor.getCreditCard().isEmpty();
 
 		request.unbind(entity, model, "picture", "slogan", "targetUrl");
 		model.setAttribute("canUpdate", hasCreditCard);

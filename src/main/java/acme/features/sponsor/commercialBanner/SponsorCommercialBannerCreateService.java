@@ -44,7 +44,7 @@ public class SponsorCommercialBannerCreateService implements AbstractCreateServi
 		Principal principal = request.getPrincipal();
 		int sponsorId = principal.getActiveRoleId();
 		Sponsor sponsor = this.repository.findSponsorById(sponsorId);
-		boolean hasCreditCard = sponsor.getCreditCard() != null;
+		boolean hasCreditCard = !sponsor.getCreditCard().isEmpty();
 
 		request.unbind(entity, model, "picture", "slogan", "targetUrl");
 		model.setAttribute("canCreate", hasCreditCard);
