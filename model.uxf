@@ -5,7 +5,7 @@
     <id>UMLClass</id>
     <coordinates>
       <x>1192</x>
-      <y>320</y>
+      <y>216</y>
       <w>192</w>
       <h>48</h>
     </coordinates>
@@ -19,7 +19,7 @@ bg=yellow</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>1016</x>
-      <y>328</y>
+      <y>224</y>
       <w>192</w>
       <h>112</h>
     </coordinates>
@@ -30,7 +30,7 @@ bg=yellow</panel_attributes>
     <id>UMLClass</id>
     <coordinates>
       <x>792</x>
-      <y>240</y>
+      <y>136</y>
       <w>176</w>
       <h>96</h>
     </coordinates>
@@ -50,7 +50,7 @@ bg=orange
     <id>UMLNote</id>
     <coordinates>
       <x>792</x>
-      <y>168</y>
+      <y>64</y>
       <w>192</w>
       <h>48</h>
     </coordinates>
@@ -63,7 +63,7 @@ bg=blue</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>312</x>
-      <y>968</y>
+      <y>864</y>
       <w>24</w>
       <h>48</h>
     </coordinates>
@@ -75,7 +75,7 @@ bg=blue</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>1232</x>
-      <y>360</y>
+      <y>256</y>
       <w>64</w>
       <h>72</h>
     </coordinates>
@@ -86,7 +86,7 @@ bg=blue</panel_attributes>
     <id>UMLClass</id>
     <coordinates>
       <x>1480</x>
-      <y>184</y>
+      <y>80</y>
       <w>80</w>
       <h>48</h>
     </coordinates>
@@ -101,7 +101,7 @@ bg=yellow</panel_attributes>
     <id>UMLClass</id>
     <coordinates>
       <x>1480</x>
-      <y>120</y>
+      <y>16</y>
       <w>80</w>
       <h>48</h>
     </coordinates>
@@ -116,7 +116,7 @@ bg=yellow</panel_attributes>
     <id>UMLClass</id>
     <coordinates>
       <x>1480</x>
-      <y>256</y>
+      <y>152</y>
       <w>80</w>
       <h>48</h>
     </coordinates>
@@ -131,7 +131,7 @@ bg=yellow</panel_attributes>
     <id>UMLClass</id>
     <coordinates>
       <x>792</x>
-      <y>352</y>
+      <y>248</y>
       <w>176</w>
       <h>56</h>
     </coordinates>
@@ -147,7 +147,7 @@ bg=orange</panel_attributes>
     <id>UMLClass</id>
     <coordinates>
       <x>904</x>
-      <y>424</y>
+      <y>320</y>
       <w>160</w>
       <h>72</h>
     </coordinates>
@@ -162,7 +162,7 @@ Provider
     <id>UMLClass</id>
     <coordinates>
       <x>1192</x>
-      <y>416</y>
+      <y>312</y>
       <w>168</w>
       <h>72</h>
     </coordinates>
@@ -177,7 +177,7 @@ Consumer
     <id>UMLClass</id>
     <coordinates>
       <x>600</x>
-      <y>240</y>
+      <y>136</y>
       <w>176</w>
       <h>64</h>
     </coordinates>
@@ -194,7 +194,7 @@ bg=yellow</panel_attributes>
     <id>UMLClass</id>
     <coordinates>
       <x>600</x>
-      <y>320</y>
+      <y>216</y>
       <w>176</w>
       <h>104</h>
     </coordinates>
@@ -214,7 +214,7 @@ bg=yellow</panel_attributes>
     <id>UMLClass</id>
     <coordinates>
       <x>600</x>
-      <y>440</y>
+      <y>336</y>
       <w>176</w>
       <h>72</h>
     </coordinates>
@@ -231,7 +231,7 @@ bg=yellow</panel_attributes>
     <id>UMLClass</id>
     <coordinates>
       <x>1144</x>
-      <y>128</y>
+      <y>24</y>
       <w>272</w>
       <h>104</h>
     </coordinates>
@@ -253,7 +253,7 @@ UserAccount
     <id>Relation</id>
     <coordinates>
       <x>1280</x>
-      <y>224</y>
+      <y>120</y>
       <w>56</w>
       <h>112</h>
     </coordinates>
@@ -267,7 +267,7 @@ has v</panel_attributes>
     <id>UMLClass</id>
     <coordinates>
       <x>320</x>
-      <y>416</y>
+      <y>312</y>
       <w>248</w>
       <h>96</h>
     </coordinates>
@@ -283,7 +283,7 @@ Shout
     <id>UMLClass</id>
     <coordinates>
       <x>312</x>
-      <y>176</y>
+      <y>72</y>
       <w>256</w>
       <h>104</h>
     </coordinates>
@@ -301,7 +301,7 @@ GarciaBulletin
     <id>UMLClass</id>
     <coordinates>
       <x>320</x>
-      <y>296</y>
+      <y>192</y>
       <w>248</w>
       <h>104</h>
     </coordinates>
@@ -318,7 +318,7 @@ FernandezBulletin
     <id>UMLClass</id>
     <coordinates>
       <x>0</x>
-      <y>176</y>
+      <y>72</y>
       <w>288</w>
       <h>104</h>
     </coordinates>
@@ -337,7 +337,7 @@ RomeroBulletin
     <id>UMLClass</id>
     <coordinates>
       <x>32</x>
-      <y>296</y>
+      <y>192</y>
       <w>256</w>
       <h>104</h>
     </coordinates>
@@ -355,7 +355,7 @@ GanforninaBulletin
     <id>UMLClass</id>
     <coordinates>
       <x>32</x>
-      <y>416</y>
+      <y>312</y>
       <w>256</w>
       <h>80</h>
     </coordinates>
@@ -371,7 +371,7 @@ perejonBulletin
     <id>UMLClass</id>
     <coordinates>
       <x>320</x>
-      <y>536</y>
+      <y>432</y>
       <w>392</w>
       <h>136</h>
     </coordinates>
@@ -392,7 +392,7 @@ Offer
     <id>UMLClass</id>
     <coordinates>
       <x>72</x>
-      <y>696</y>
+      <y>592</y>
       <w>424</w>
       <h>168</h>
     </coordinates>
@@ -416,7 +416,7 @@ CompanyRecord
     <id>UMLClass</id>
     <coordinates>
       <x>672</x>
-      <y>888</y>
+      <y>784</y>
       <w>256</w>
       <h>120</h>
     </coordinates>
@@ -433,7 +433,7 @@ text: String (NotBlank)</panel_attributes>
     <id>UMLClass</id>
     <coordinates>
       <x>560</x>
-      <y>712</y>
+      <y>608</y>
       <w>248</w>
       <h>120</h>
     </coordinates>
@@ -451,7 +451,7 @@ InvestorRecord
     <id>UMLClass</id>
     <coordinates>
       <x>376</x>
-      <y>896</y>
+      <y>792</y>
       <w>256</w>
       <h>128</h>
     </coordinates>
@@ -470,7 +470,7 @@ Request
     <id>UMLClass</id>
     <coordinates>
       <x>64</x>
-      <y>888</y>
+      <y>784</y>
       <w>256</w>
       <h>160</h>
     </coordinates>
@@ -492,7 +492,7 @@ Challenge
     <id>UMLNote</id>
     <coordinates>
       <x>64</x>
-      <y>552</y>
+      <y>448</y>
       <w>224</w>
       <h>64</h>
     </coordinates>
@@ -507,7 +507,7 @@ bg=white</panel_attributes>
     <id>UMLClass</id>
     <coordinates>
       <x>728</x>
-      <y>560</y>
+      <y>456</y>
       <w>304</w>
       <h>88</h>
     </coordinates>
@@ -522,7 +522,7 @@ Customization
     <id>UMLClass</id>
     <coordinates>
       <x>2112</x>
-      <y>624</y>
+      <y>520</y>
       <w>304</w>
       <h>104</h>
     </coordinates>
@@ -539,7 +539,7 @@ Customization
     <id>UMLClass</id>
     <coordinates>
       <x>2032</x>
-      <y>808</y>
+      <y>704</y>
       <w>296</w>
       <h>88</h>
     </coordinates>
@@ -553,7 +553,7 @@ CommercialBanner
     <id>UMLClass</id>
     <coordinates>
       <x>2368</x>
-      <y>808</y>
+      <y>704</y>
       <w>224</w>
       <h>88</h>
     </coordinates>
@@ -567,7 +567,7 @@ NonCommercialBanner
     <id>Relation</id>
     <coordinates>
       <x>2168</x>
-      <y>720</y>
+      <y>616</y>
       <w>112</w>
       <h>104</h>
     </coordinates>
@@ -578,7 +578,7 @@ NonCommercialBanner
     <id>Relation</id>
     <coordinates>
       <x>2280</x>
-      <y>720</y>
+      <y>616</y>
       <w>168</w>
       <h>104</h>
     </coordinates>
@@ -589,7 +589,7 @@ NonCommercialBanner
     <id>Relation</id>
     <coordinates>
       <x>280</x>
-      <y>584</y>
+      <y>480</y>
       <w>56</w>
       <h>24</h>
     </coordinates>
@@ -600,7 +600,7 @@ NonCommercialBanner
     <id>UMLClass</id>
     <coordinates>
       <x>1048</x>
-      <y>504</y>
+      <y>400</y>
       <w>176</w>
       <h>72</h>
     </coordinates>
@@ -615,7 +615,7 @@ Worker
     <id>Relation</id>
     <coordinates>
       <x>1096</x>
-      <y>360</y>
+      <y>256</y>
       <w>112</w>
       <h>160</h>
     </coordinates>
@@ -626,7 +626,7 @@ Worker
     <id>UMLClass</id>
     <coordinates>
       <x>1720</x>
-      <y>408</y>
+      <y>304</y>
       <w>168</w>
       <h>72</h>
     </coordinates>
@@ -641,7 +641,7 @@ Auditor
     <id>UMLClass</id>
     <coordinates>
       <x>2112</x>
-      <y>416</y>
+      <y>312</y>
       <w>320</w>
       <h>96</h>
     </coordinates>
@@ -656,7 +656,7 @@ Sponsor
     <id>Relation</id>
     <coordinates>
       <x>2264</x>
-      <y>504</y>
+      <y>400</y>
       <w>88</w>
       <h>136</h>
     </coordinates>
@@ -670,7 +670,7 @@ created by ^</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>1368</x>
-      <y>360</y>
+      <y>256</y>
       <w>440</w>
       <h>64</h>
     </coordinates>
@@ -681,7 +681,7 @@ created by ^</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>1376</x>
-      <y>336</y>
+      <y>232</y>
       <w>872</w>
       <h>96</h>
     </coordinates>
@@ -692,7 +692,7 @@ created by ^</panel_attributes>
     <id>UMLClass</id>
     <coordinates>
       <x>1464</x>
-      <y>488</y>
+      <y>384</y>
       <w>168</w>
       <h>72</h>
     </coordinates>
@@ -707,7 +707,7 @@ Employer
     <id>Relation</id>
     <coordinates>
       <x>1296</x>
-      <y>360</y>
+      <y>256</y>
       <w>216</w>
       <h>144</h>
     </coordinates>
@@ -718,7 +718,7 @@ Employer
     <id>UMLClass</id>
     <coordinates>
       <x>1392</x>
-      <y>640</y>
+      <y>536</y>
       <w>328</w>
       <h>136</h>
     </coordinates>
@@ -738,7 +738,7 @@ Job
     <id>UMLClass</id>
     <coordinates>
       <x>1264</x>
-      <y>800</y>
+      <y>696</y>
       <w>176</w>
       <h>72</h>
     </coordinates>
@@ -755,7 +755,7 @@ bg=yellow</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>1544</x>
-      <y>552</y>
+      <y>448</y>
       <w>88</w>
       <h>104</h>
     </coordinates>
@@ -769,7 +769,7 @@ m2= 0..*</panel_attributes>
     <id>UMLClass</id>
     <coordinates>
       <x>1456</x>
-      <y>848</y>
+      <y>744</y>
       <w>216</w>
       <h>72</h>
     </coordinates>
@@ -785,7 +785,7 @@ Descriptor
     <id>UMLClass</id>
     <coordinates>
       <x>1456</x>
-      <y>984</y>
+      <y>880</y>
       <w>216</w>
       <h>72</h>
     </coordinates>
@@ -803,7 +803,7 @@ Duty
     <id>Relation</id>
     <coordinates>
       <x>1552</x>
-      <y>768</y>
+      <y>664</y>
       <w>96</w>
       <h>96</h>
     </coordinates>
@@ -817,7 +817,7 @@ describedBy v</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>1552</x>
-      <y>912</y>
+      <y>808</y>
       <w>80</w>
       <h>88</h>
     </coordinates>
@@ -831,7 +831,7 @@ includes v</panel_attributes>
     <id>UMLClass</id>
     <coordinates>
       <x>1048</x>
-      <y>648</y>
+      <y>544</y>
       <w>256</w>
       <h>120</h>
     </coordinates>
@@ -851,7 +851,7 @@ Application
     <id>Relation</id>
     <coordinates>
       <x>1136</x>
-      <y>568</y>
+      <y>464</y>
       <w>64</w>
       <h>96</h>
     </coordinates>
@@ -865,7 +865,7 @@ does v</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>1296</x>
-      <y>696</y>
+      <y>592</y>
       <w>112</w>
       <h>40</h>
     </coordinates>
@@ -879,7 +879,7 @@ m2=1
     <id>UMLClass</id>
     <coordinates>
       <x>1072</x>
-      <y>776</y>
+      <y>672</y>
       <w>136</w>
       <h>80</h>
     </coordinates>
@@ -896,7 +896,7 @@ bg=yellow</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>1376</x>
-      <y>272</y>
+      <y>168</y>
       <w>120</w>
       <h>64</h>
     </coordinates>
@@ -907,7 +907,7 @@ bg=yellow</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>1360</x>
-      <y>224</y>
+      <y>120</y>
       <w>136</w>
       <h>112</h>
     </coordinates>
@@ -918,7 +918,7 @@ bg=yellow</panel_attributes>
     <id>UMLClass</id>
     <coordinates>
       <x>2296</x>
-      <y>224</y>
+      <y>120</y>
       <w>248</w>
       <h>88</h>
     </coordinates>
@@ -935,7 +935,7 @@ Message
     <id>UMLClass</id>
     <coordinates>
       <x>1888</x>
-      <y>216</y>
+      <y>112</y>
       <w>248</w>
       <h>64</h>
     </coordinates>
@@ -951,7 +951,7 @@ Thread
     <id>Relation</id>
     <coordinates>
       <x>2128</x>
-      <y>232</y>
+      <y>128</y>
       <w>184</w>
       <h>40</h>
     </coordinates>
@@ -965,7 +965,7 @@ m2=1
     <id>Relation</id>
     <coordinates>
       <x>1552</x>
-      <y>288</y>
+      <y>184</y>
       <w>760</w>
       <h>40</h>
     </coordinates>
@@ -980,7 +980,7 @@ m2=0..*
     <id>Relation</id>
     <coordinates>
       <x>1336</x>
-      <y>160</y>
+      <y>56</y>
       <w>160</w>
       <h>176</h>
     </coordinates>
@@ -991,7 +991,7 @@ m2=0..*
     <id>UMLClass</id>
     <coordinates>
       <x>1808</x>
-      <y>664</y>
+      <y>560</y>
       <w>216</w>
       <h>88</h>
     </coordinates>
@@ -1008,7 +1008,7 @@ AuditRecord
     <id>Relation</id>
     <coordinates>
       <x>1856</x>
-      <y>472</y>
+      <y>368</y>
       <w>80</w>
       <h>208</h>
     </coordinates>
@@ -1022,7 +1022,7 @@ writed by ^</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>1712</x>
-      <y>712</y>
+      <y>608</y>
       <w>112</w>
       <h>40</h>
     </coordinates>
@@ -1035,23 +1035,24 @@ have &gt;</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1688</x>
-      <y>232</y>
-      <w>88</w>
+      <x>1656</x>
+      <y>128</y>
+      <w>136</w>
       <h>56</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Entity&gt;&gt;
 usertThread
 --
++ creatorThread :Boolean
 </panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1768</x>
-      <y>248</y>
-      <w>136</w>
+      <x>1784</x>
+      <y>144</y>
+      <w>120</w>
       <h>40</h>
     </coordinates>
     <panel_attributes>lt=x-&gt;
@@ -1059,14 +1060,14 @@ m1=1..*
 m2=1
 involvedIn &gt;
 </panel_attributes>
-    <additional_attributes>10.0;20.0;150.0;20.0</additional_attributes>
+    <additional_attributes>10.0;20.0;130.0;20.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
       <x>1552</x>
-      <y>264</y>
-      <w>152</w>
+      <y>160</y>
+      <w>120</w>
       <h>40</h>
     </coordinates>
     <panel_attributes>lt=&lt;-x
@@ -1074,6 +1075,6 @@ m1=1
 m2=0..*
 &lt; represents
 </panel_attributes>
-    <additional_attributes>10.0;20.0;170.0;20.0</additional_attributes>
+    <additional_attributes>10.0;20.0;130.0;20.0</additional_attributes>
   </element>
 </diagram>
