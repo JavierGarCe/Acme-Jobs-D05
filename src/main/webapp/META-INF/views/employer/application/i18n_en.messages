@@ -19,6 +19,7 @@ employer.justification.error.notblank = An application's rejection must be justi
 employer.application.list.label.moment = Moment
 employer.application.list.label.status = Status
 employer.application.list.label.statement = Statement
+employer.application.list.label.reference = Reference
 employer.application.list.button.status = Group by status
 employer.application.list.button.creation = Group by creation moment
 employer.application.list.button.reference = Group by reference
