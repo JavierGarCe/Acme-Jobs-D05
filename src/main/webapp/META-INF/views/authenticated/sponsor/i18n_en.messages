@@ -7,4 +7,7 @@ authenticated.sponsor.form.button.return = Return
 authenticated.sponsor.form.title.create = Become a sponsor
 authenticated.sponsor.form.title.update = Update your sponsor data
 
+
 authenticated.message.error.creditCard = The credit Card number is false
+authenticated.message.error.creditCardNumero = The credit Card is not a number. don't let spaces inter numbers.
+

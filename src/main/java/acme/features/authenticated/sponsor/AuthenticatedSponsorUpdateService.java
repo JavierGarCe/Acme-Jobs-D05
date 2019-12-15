@@ -53,11 +53,18 @@ public class AuthenticatedSponsorUpdateService implements AbstractUpdateService<
 		assert errors != null;
 		String creditCard;
 		Boolean valida = true;
+		Boolean numerico = true;
 		if (!errors.hasErrors("creditCard") && !entity.getCreditCard().isEmpty()) {
+			creditCard = entity.getCreditCard();
+			numerico = AuthenticatedSponsorCreateService.isNumeric(creditCard);
+
+		}
+		if (!errors.hasErrors("creditCard") && !entity.getCreditCard().isEmpty() && numerico) {
 			creditCard = entity.getCreditCard();
 			valida = AuthenticatedSponsorCreateService.Check(creditCard.trim());
 		}
 
+		errors.state(request, numerico, "creditCard", "authenticated.message.error.creditCardNumero");
 		errors.state(request, valida, "creditCard", "authenticated.message.error.creditCard");
 	}
 
