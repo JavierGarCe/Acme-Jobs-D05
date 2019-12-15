@@ -70,6 +70,7 @@ master.menu.authenticated.listInvestorRecord = List Investor Records
 master.menu.authenticated.requests.list = List Requests
 master.menu.authenticated.challenge = List Challenges
 master.menu.authenticated.threads = List my threads
+master.menu.authenticated.threads.create = Create new thread
 master.menu.authenticated.listActiveJobs = List active jobs
 
 # master.menu.administrator ###################################################
