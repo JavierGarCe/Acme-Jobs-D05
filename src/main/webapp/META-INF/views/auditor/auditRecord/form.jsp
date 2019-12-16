@@ -32,7 +32,7 @@
 		<acme:form-textarea code="auditor.auditRecord.form.label.body" path="body"/>
   	
   	<acme:form-return code="auditor.auditRecord.form.button.return"/>
-  	<acme:form-submit test="${command == 'show' and hasAccess == false }" code="auditor.auditRecord.form.button.update"
+  	<acme:form-submit test="${command == 'show' and hasAccess == false and status== 'DRAFT'}" code="auditor.auditRecord.form.button.update"
 	action="/auditor/auditRecord/update"/>
 	<acme:form-submit test="${command == 'create' }" code="auditor.auditRecord.form.button.create"
 	action="/auditor/auditRecord/create"/>
