@@ -43,7 +43,7 @@ public class EmployerJobShowService implements AbstractShowService<Employer, Job
 		assert entity != null;
 		assert model != null;
 
-		request.unbind(entity, model, "title", "salary", "deadline", "moreInfo", "reference", "status", "descriptor", "descriptor.description", "employer.userAccount.username");
+		request.unbind(entity, model, "title", "salary", "deadline", "moreInfo", "reference", "status", "descriptor", "descriptor.description");
 		Integer jobId = request.getModel().getInteger("id");
 		boolean hasApplications = this.repository.countApplicationById(jobId) > 0;
 		model.setAttribute("hasApplications", hasApplications);
