@@ -1,6 +1,7 @@
 
 package acme.features.administrator.chart;
 
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
@@ -36,7 +37,7 @@ public class AdministratorChartShowService implements AbstractShowService<Admini
 		assert entity != null;
 		assert model != null;
 
-		request.unbind(entity, model, "companiesBySector", "investorsBySector", "jobsByStatusRatio", "applicationsByStatusRatio", "applicationsLastMonth");
+		request.unbind(entity, model, "companiesBySector", "investorsBySector", "jobsByStatusRatio", "applicationsByStatusRatio", "pendingApplicationsLastMonth", "acceptedApplicationsLastMonth", "rejectedApplicationsLastMonth", "dates");
 
 	}
 
@@ -54,8 +55,18 @@ public class AdministratorChartShowService implements AbstractShowService<Admini
 		Date nowDate = new Date(System.currentTimeMillis());
 		cal.setTime(nowDate);
 		cal.add(Calendar.DATE, -28); //Restar 4 semanas
-		res.setApplicationsLastMonth(this.repository.findApplicationsLastMonthByDayAndStatus(cal.getTime()));
-		System.out.println(res.getApplicationsLastMonth().length);
+		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+		String[] dates = new String[28];
+		for (int i = 0; i < dates.length; i++) {
+			cal.add(Calendar.DAY_OF_MONTH, 1);
+			dates[i] = formatter.format(cal.getTime());
+		}
+		res.setDates(dates);
+		cal.setTime(nowDate);
+		cal.add(Calendar.DATE, -28); //Restar 4 semanas
+		res.setAcceptedApplicationsLastMonth(this.repository.findAcceptedApplicationsLastMonth(cal.getTime()));
+		res.setPendingApplicationsLastMonth(this.repository.findPendingApplicationsLastMonth(cal.getTime()));
+		res.setRejectedApplicationsLastMonth(this.repository.findRejectedApplicationsLastMonth(cal.getTime()));
 
 		return res;
 

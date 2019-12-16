@@ -3,15 +3,19 @@
 <%@taglib prefix="acme" tagdir="/WEB-INF/tags"%>
 
 
-<div >
+<div>
 
 	<canvas id="canvas"></canvas>
 
 </div>
 
-<div style="clear:left"> <canvas id="canvas2"></canvas> </div>
+<div style="clear: left">
+	<canvas id="canvas2"></canvas>
+</div>
 
-<div style="clear:left"> <canvas id="canvas3"></canvas> </div>
+<div style="clear: left">
+	<canvas id="canvas3"></canvas>
+</div>
 
 
 <script type="text/javascript">
@@ -157,8 +161,8 @@
 			var data3 = {
 
 					labels : [
-						<jstl:forEach var ="i" items="${applicationsLastMonth}">
-						"<jstl:out value='${i[0]}'/>",
+						<jstl:forEach var ="i" items="${dates}">
+						"<jstl:out value='${i}'/>",
 						</jstl:forEach>		
 						
 
@@ -175,14 +179,15 @@
 							label:"<acme:message code='pendingApplicationsPerDay'/>",
 
 							data :[
-								<jstl:forEach var ="i" items="${applicationsLastMonth}">
-								<jstl:if test="${i[1] == 'PENDING'}">
-									<jstl:out value="${i[2]}"/>,
-								</jstl:if>
-								<jstl:if test="${i[1] != 'PENDING'}">
-									<jstl:out value="0"/>,
-								</jstl:if>
+								<jstl:forEach var ="i" items="${dates}">
+								<jstl:set var="printValue" value="0"/>
+								<jstl:forEach var = "j" items="${pendingApplicationsLastMonth}">
+									<jstl:if test="${i == j[0]}">
+										<jstl:set var="printValue" value="${j[1]}"/>
+									</jstl:if>
 								</jstl:forEach>
+								<jstl:out value="${printValue}"/>,
+							</jstl:forEach>
 												
 								
 
@@ -199,14 +204,15 @@
 							label:"<acme:message code='acceptedApplicationsPerDay'/>",
 
 							data :[
-								<jstl:forEach var ="i" items="${applicationsLastMonth}">
-								<jstl:if test="${i[1] == 'ACCEPTED'}">
-									<jstl:out value="${i[2]}"/>,
-								</jstl:if>
-								<jstl:if test="${i[1] != 'ACCEPTED'}">
-									<jstl:out value="0"/>,
-								</jstl:if>
+								<jstl:forEach var ="i" items="${dates}">
+								<jstl:set var="printValue" value="0"/>
+								<jstl:forEach var = "j" items="${acceptedApplicationsLastMonth}">
+									<jstl:if test="${i == j[0]}">
+										<jstl:set var="printValue" value="${j[1]}"/>
+									</jstl:if>
 								</jstl:forEach>
+								<jstl:out value="${printValue}"/>,
+							</jstl:forEach>
 												
 								
 
@@ -223,13 +229,14 @@
 							label:"<acme:message code='rejectedApplicationsPerDay'/>",
 
 							data :[
-								<jstl:forEach var ="i" items="${applicationsLastMonth}">
-								<jstl:if test="${i[1] == 'REJECTED'}">
-									<jstl:out value="${i[2]}"/>,
-								</jstl:if>
-								<jstl:if test="${i[1] != 'REJECTED'}">
-									<jstl:out value="0"/>,
-								</jstl:if>
+								<jstl:forEach var ="i" items="${dates}">
+									<jstl:set var="printValue" value="0"/>
+									<jstl:forEach var = "j" items="${rejectedApplicationsLastMonth}">
+										<jstl:if test="${i == j[0]}">
+											<jstl:set var="printValue" value="${j[1]}"/>
+										</jstl:if>
+									</jstl:forEach>
+									<jstl:out value="${printValue}"/>,
 								</jstl:forEach>
 												
 								

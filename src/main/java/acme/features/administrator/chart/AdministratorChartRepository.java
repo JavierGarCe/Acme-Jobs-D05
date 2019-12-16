@@ -23,6 +23,12 @@ public interface AdministratorChartRepository extends AbstractRepository {
 	@Query("select 1.0*count(h)/(select count(*) from Application), h.status from Application h group by h.status")
 	Object[] applicationsByStatusRatio();
 
-	@Query("select DATE(a.moment), a.status, count(a) from Application a where a.moment >= ?1 group by DAY(a.moment), a.status")
-	Object[] findApplicationsLastMonthByDayAndStatus(Date date);
+	@Query("select DATE(a.moment), count(a) from Application a where a.status=0 and a.moment > ?1 group by DAY(a.moment)")
+	Object[] findPendingApplicationsLastMonth(Date date);
+
+	@Query("select DATE(a.moment), count(a) from Application a where a.status=1 and a.moment > ?1 group by DAY(a.moment)")
+	Object[] findAcceptedApplicationsLastMonth(Date date);
+
+	@Query("select DATE(a.moment), count(a) from Application a where a.status=2 and a.moment > ?1 group by DAY(a.moment)")
+	Object[] findRejectedApplicationsLastMonth(Date date);
 }

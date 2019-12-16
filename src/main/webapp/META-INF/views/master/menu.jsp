@@ -86,6 +86,7 @@
 	  		<acme:menu-suboption code="master.menu.administrator.customization" action="/administrator/customization/list"/>	
     <acme:menu-separator/>
 			<acme:menu-suboption code="master.menu.administrator.dashboard" action="/administrator/dashboard/show"/>
+			<acme:menu-suboption code="master.menu.administrator.chart" action="/administrator/chart/show-chart"/>
   <acme:menu-separator/>
 			<acme:menu-suboption code="master.menu.administrator.listChallenge" action="/administrator/challenge/list" />
 			<acme:menu-suboption code="master.menu.administrator.createChallenge" action="/administrator/challenge/create" />
@@ -94,10 +95,7 @@
 			<acme:menu-suboption code="master.menu.administrator.createInvestorRecords" action="/administrator/investor-record/create"/>
 			<acme:menu-separator/>
 			<acme:menu-suboption code="master.menu.administrator.listCompanyRecords" action="/administrator/company-record/list"/>
-			<acme:menu-suboption code="master.menu.administrator.createCompanyRecords" action="/administrator/company-record/create"/>
-			 <acme:menu-separator/>
-			<acme:menu-suboption code="master.menu.administrator.chart" action="/administrator/chart/show-chart"/>
-			
+			<acme:menu-suboption code="master.menu.administrator.createCompanyRecords" action="/administrator/company-record/create"/>			
 		</acme:menu-option>
 
 		<acme:menu-option code="master.menu.provider" access="hasRole('Provider')">		

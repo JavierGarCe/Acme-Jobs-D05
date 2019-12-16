@@ -19,5 +19,5 @@ public class Chart implements Serializable {
 	Object[]					pendingApplicationsLastMonth;
 	Object[]					acceptedApplicationsLastMonth;
 	Object[]					rejectedApplicationsLastMonth;
-	Object[]					applicationsLastMonth;
+	String[]					dates;
 }
