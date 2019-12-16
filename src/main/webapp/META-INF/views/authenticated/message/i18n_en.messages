@@ -15,5 +15,5 @@ authenticated.Message.form.button.create = Create
 authenticated.message.form.button.post = Post a new message
 
 authenticated.message.form.checkbox = Must confirm create
-
+authenticated.requests.error.must-confirm = Please confirm the message
 authenticated.message.error.spam = The message is Spam
