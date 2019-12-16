@@ -22,7 +22,8 @@
 			</jstl:if>
 
 			<jstl:if test="${model$size == 1}">
-				<acme:form-option code="${requestScope[userAccount.username]}" value="${id}" />
+				<jstl:set var="var1" value="userAccount.username"/>
+				<acme:form-option code="${requestScope[var1]}" value="${id}" />
 			</jstl:if>
 
 		</acme:form-select>
