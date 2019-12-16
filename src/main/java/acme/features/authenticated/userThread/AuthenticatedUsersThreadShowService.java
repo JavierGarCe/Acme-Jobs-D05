@@ -37,7 +37,7 @@ public class AuthenticatedUsersThreadShowService implements AbstractShowService<
 		assert entity != null;
 		assert model != null;
 
-		request.unbind(entity, model, "authenticated.userAccount.username");
+		request.unbind(entity, model, "authenticated.userAccount.username", "creatorThread");
 	}
 
 	@Override

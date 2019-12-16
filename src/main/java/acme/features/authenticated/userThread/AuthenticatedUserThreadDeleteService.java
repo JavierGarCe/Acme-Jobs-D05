@@ -75,7 +75,6 @@ public class AuthenticatedUserThreadDeleteService implements AbstractDeleteServi
 		boolean sameUser = id == authenticatedId;
 		errors.state(request, !sameUser, "authenticated.userAccount.username", "authenticated.userThread.delete.creatorThread");
 
-		//ALGO MAS?
 	}
 
 	@Override

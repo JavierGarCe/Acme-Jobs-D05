@@ -37,7 +37,7 @@ public class AuthenticatedAuthenticatedListService implements AbstractListServic
 		assert entity != null;
 		assert model != null;
 
-		request.unbind(entity, model, "userAccount.username"); //DUDA	
+		request.unbind(entity, model, "userAccount.username");
 
 	}
 
