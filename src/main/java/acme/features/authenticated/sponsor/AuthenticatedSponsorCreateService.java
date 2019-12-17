@@ -41,10 +41,7 @@ public class AuthenticatedSponsorCreateService implements AbstractCreateService<
 	@Override
 	public boolean authorise(final Request<Sponsor> request) {
 		assert request != null;
-		Principal principal = request.getPrincipal();
-		Integer userAccountId = principal.getAccountId();
-
-		return this.repository.findOneSponsorByUserAccountId(userAccountId) == null;
+		return !request.getPrincipal().hasRole(Sponsor.class);
 
 	}
 

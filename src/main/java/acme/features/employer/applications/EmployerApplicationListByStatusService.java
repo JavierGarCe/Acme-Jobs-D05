@@ -13,7 +13,7 @@ import acme.framework.components.Request;
 import acme.framework.services.AbstractListService;
 
 @Service
-public class EmployerApplicationListService implements AbstractListService<Employer, Application> {
+public class EmployerApplicationListByStatusService implements AbstractListService<Employer, Application> {
 
 	@Autowired
 	private EmployerApplicationRepository repository;
@@ -41,7 +41,7 @@ public class EmployerApplicationListService implements AbstractListService<Emplo
 		Collection<Application> result;
 		int id = request.getPrincipal().getActiveRoleId();
 
-		result = this.repository.findManyByEmployerId(id);
+		result = this.repository.findManyByEmployerIdGroupByStatus(id);
 
 		return result;
 	}
