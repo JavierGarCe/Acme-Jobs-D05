@@ -25,19 +25,8 @@
 		var data = {
 
 			labels : [
-				<jstl:forEach var ="i" items="${companiesBySector}" varStatus="status">
-				"<jstl:out value='${i[1]}'/>",
-				</jstl:forEach>
-				
-				<jstl:forEach var ="i" items="${investorsBySector}" varStatus="status">
-				<jstl:choose>
-				<jstl:when test="${status.last}">
-				"<jstl:out value='${i[1]}'/>"
-				</jstl:when>
-				<jstl:when test="${!status.last}">
-				"<jstl:out value='${i[1]}'/>",
-				</jstl:when>
-				</jstl:choose>
+				<jstl:forEach var ="i" items="${sectores}" varStatus="status">
+					"<jstl:out value='${i}'/>",
 				</jstl:forEach>
 				
 				
@@ -53,13 +42,15 @@
 					label:"<acme:message code='companiesbysector'/>",
 
 					data :[
-						<jstl:forEach var ="i" items="${companiesBySector}" varStatus="status">
-						<jstl:out value='${i[0]}'/>,
+						<jstl:forEach var ="i" items="${sectores}">
+							<jstl:set var="printValue" value="0"/>
+							<jstl:forEach var ="j" items="${companiesBySector}">
+								<jstl:if test="${i==j[1]}">
+									<jstl:set var="printValue" value="${j[0]}"/>
+								</jstl:if>
+							</jstl:forEach>
+							<jstl:out value="${printValue}"/>,
 						</jstl:forEach>
-						<jstl:forEach var ="i" items="${investorsBySector}" varStatus="status">
-						<jstl:out value='0'/>,
-						</jstl:forEach>
-						
 						
 
 				 	]
@@ -73,12 +64,15 @@
 					label:"<acme:message code='investorsbysector'/>",
 
 					data :[
-						<jstl:forEach var ="i" items="${companiesBySector}" varStatus="status">
-						<jstl:out value='0'/>,
+						<jstl:forEach var ="i" items="${sectores}">
+						<jstl:set var="printValue" value="0"/>
+						<jstl:forEach var ="j" items="${investorsBySector}">
+							<jstl:if test="${i==j[1]}">
+								<jstl:set var="printValue" value="${j[0]}"/>
+							</jstl:if>
 						</jstl:forEach>
-						<jstl:forEach var ="i" items="${investorsBySector}" varStatus="status">
-						<jstl:out value='${i[0]}'/>,
-						</jstl:forEach>
+						<jstl:out value="${printValue}"/>,
+					</jstl:forEach>
 
 				 	]
 

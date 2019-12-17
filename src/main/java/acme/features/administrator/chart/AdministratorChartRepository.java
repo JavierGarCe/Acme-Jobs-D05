@@ -1,6 +1,7 @@
 
 package acme.features.administrator.chart;
 
+import java.util.Collection;
 import java.util.Date;
 
 import org.springframework.data.jpa.repository.Query;
@@ -31,4 +32,10 @@ public interface AdministratorChartRepository extends AbstractRepository {
 
 	@Query("select DATE(a.moment), count(a) from Application a where a.status=2 and a.moment > ?1 group by DAY(a.moment)")
 	Object[] findRejectedApplicationsLastMonth(Date date);
+
+	@Query("select c.sector from CompanyRecord c")
+	Collection<String> findCompaniesSectors();
+
+	@Query("select i.sector from InvestorRecord i")
+	Collection<String> findInvestorSectors();
 }

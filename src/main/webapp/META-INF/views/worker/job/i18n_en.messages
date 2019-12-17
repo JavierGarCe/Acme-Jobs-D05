@@ -15,7 +15,7 @@ worker.job.form.label.duty.percentage = Percentage:
 worker.job.form.label.status.draft = Draft
 worker.job.form.label.status.published = Published
 worker.job.form.button.return = Return
-employer.job.form.button.createApplication = Applicate job
+employer.job.form.button.createApplication = Apply job
 
 worker.job.list.label.title = Title
 worker.job.list.label.salary = Salary

@@ -5,6 +5,8 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
+import java.util.HashSet;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -37,7 +39,7 @@ public class AdministratorChartShowService implements AbstractShowService<Admini
 		assert entity != null;
 		assert model != null;
 
-		request.unbind(entity, model, "companiesBySector", "investorsBySector", "jobsByStatusRatio", "applicationsByStatusRatio", "pendingApplicationsLastMonth", "acceptedApplicationsLastMonth", "rejectedApplicationsLastMonth", "dates");
+		request.unbind(entity, model, "companiesBySector", "investorsBySector", "sectores", "jobsByStatusRatio", "applicationsByStatusRatio", "pendingApplicationsLastMonth", "acceptedApplicationsLastMonth", "rejectedApplicationsLastMonth", "dates");
 
 	}
 
@@ -48,6 +50,12 @@ public class AdministratorChartShowService implements AbstractShowService<Admini
 		Chart res = new Chart();
 		res.setCompaniesBySector(this.repository.companiesBySector());
 		res.setInvestorsBySector(this.repository.investorsBySector());
+
+		Set<String> sectores = new HashSet<>();
+		sectores.addAll(this.repository.findCompaniesSectors());
+		sectores.addAll(this.repository.findInvestorSectors());
+		res.setSectores(sectores);
+
 		res.setJobsByStatusRatio(this.repository.jobsByStatusRatio());
 		res.setApplicationsByStatusRatio(this.repository.applicationsByStatusRatio());
 

@@ -2,6 +2,7 @@
 package acme.forms.chart;
 
 import java.io.Serializable;
+import java.util.Set;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -15,7 +16,7 @@ public class Chart implements Serializable {
 	Object[]					investorsBySector;
 	Object[]					jobsByStatusRatio;
 	Object[]					applicationsByStatusRatio;
-	Object[]					sectores;
+	Set<String>					sectores;
 	Object[]					pendingApplicationsLastMonth;
 	Object[]					acceptedApplicationsLastMonth;
 	Object[]					rejectedApplicationsLastMonth;
