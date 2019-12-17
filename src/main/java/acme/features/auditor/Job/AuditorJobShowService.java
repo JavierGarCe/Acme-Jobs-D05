@@ -55,6 +55,15 @@ public class AuditorJobShowService implements AbstractShowService<Auditor, Job> 
 		assert entity != null;
 		assert model != null;
 
+		int jobId = request.getModel().getInteger("id");
+		Job job = this.repository.findOneJobById(jobId);
+		Date deadline;
+		deadline = job.getDeadline();
+		Calendar cal = new GregorianCalendar();
+		Boolean canAudit = deadline.after(cal.getTime());
+
+		model.setAttribute("canAudit", canAudit);
+
 		request.unbind(entity, model, "title", "salary", "deadline", "reference", "status", "descriptor.description", "moreInfo");
 
 	}

@@ -28,7 +28,10 @@ public class AuthenticatedAuthenticatedListService implements AbstractListServic
 		UserThread userThread = this.repository.findOneByThreadIdAndAuthenticatedId(threadId, meId);
 		Boolean res = userThread.getCreatorThread();
 
-		return res;
+		Collection<Authenticated> nonIncluded = this.repository.findUserThreadNotInThread(threadId);
+		Boolean canAddUser = nonIncluded.size() > 0;
+
+		return res && canAddUser;
 	}
 
 	@Override

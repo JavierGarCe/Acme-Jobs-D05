@@ -27,6 +27,7 @@ public class AuthenticatedUserThreadCreateService implements AbstractCreateServi
 		int id = request.getPrincipal().getActiveRoleId();
 		UserThread userThread = this.repository.findOneByThreadIdAndAuthenticatedId(threadId, id);
 		boolean res = userThread.getCreatorThread();
+
 		return res;
 	}
 

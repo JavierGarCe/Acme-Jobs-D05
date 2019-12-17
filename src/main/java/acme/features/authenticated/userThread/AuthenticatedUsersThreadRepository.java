@@ -32,4 +32,7 @@ public interface AuthenticatedUsersThreadRepository extends AbstractRepository {
 	@Query("select ut from UserThread ut where ut.thread.id=?1 and ut.authenticated.id =?2")
 	UserThread findOneByThreadIdAndAuthenticatedId(int threadId, int authenticatedId);
 
+	@Query("select a from Authenticated a where a not in (select ut.authenticated from UserThread ut where ut.thread.id = ?1)")
+	Collection<Authenticated> findUserThreadNotInThread(int threadId);
+
 }

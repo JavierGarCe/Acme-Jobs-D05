@@ -46,9 +46,11 @@
 		<acme:message code="employer.job.form.label.descriptorMessage" />
 	</button>
 	
+	<jstl:if test="${canAudit==true}">
 	<button type="button" onclick="javascript: pushReturnUrl('/auditor/job/show?id=${id}'); redirect('/auditor/auditRecord/create?jobId=${id}')" class="btn btn-primary">
 		<acme:message code="master.menu.anonymous.createAuditRecord" />
 	</button>
+	</jstl:if>
 	
 		<acme:form-return code="auditor.job.form.button.return" />
 	

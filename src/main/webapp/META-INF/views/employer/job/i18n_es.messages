@@ -24,8 +24,6 @@ employer.job.list.label.salary = Salario
 employer.job.list.label.deadline = Fecha límite
 
 master.menu.employer.listAuditRecords = Registro de auditorías
-master.menu.employer.notUpdate = Este trabajo no se puede actualizar porque está guardado en modo publicado.
-master.menu.employer.notDelete = Este trabajo no se puede eliminar porque uno o más trabajadores lo han solicitado.
 
 employer.job.error.spam = La entrada es considerada spam y no se puede guardar en modo publicado
 employer.reference.error.duplicated = La referencia debe ser única

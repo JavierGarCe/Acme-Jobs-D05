@@ -38,7 +38,12 @@ public class AuthenticatedUsersThreadListService implements AbstractListService<
 		assert entity != null;
 		assert model != null;
 
-		request.unbind(entity, model, "authenticated.userAccount.username"); //DUDA
+		int threadId = request.getModel().getInteger("id");
+		Collection<Authenticated> nonIncluded = this.repository.findUserThreadNotInThread(threadId);
+		Boolean canAddUser = nonIncluded.size() > 0;
+		model.setAttribute("canAddUser", canAddUser);
+
+		request.unbind(entity, model, "authenticated.userAccount.username");
 
 	}
 

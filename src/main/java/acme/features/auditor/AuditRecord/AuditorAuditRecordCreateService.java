@@ -29,6 +29,7 @@ public class AuditorAuditRecordCreateService implements AbstractCreateService<Au
 		Job job = this.repository.findJobById(jobId);
 		Date nowDate = new Date(System.currentTimeMillis());
 		boolean result = job.getDeadline().after(nowDate) && job.getStatus().equals(Status.PUBLISHED);
+
 		return result;
 	}
 

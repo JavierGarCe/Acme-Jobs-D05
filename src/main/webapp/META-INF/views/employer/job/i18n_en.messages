@@ -24,8 +24,6 @@ employer.job.list.label.salary = Salary
 employer.job.list.label.deadline = Deadline
 
 master.menu.employer.listAuditRecords = Audit records
-master.menu.employer.notUpdate = This job can't be update because it's saved in published mode.
-master.menu.employer.notDelete = This job can't be deleted because one or more workers has applied for it.
 
 employer.job.error.spam = Input is considered spam and cannot be saved in published mode
 employer.reference.error.duplicated = The reference must be unique
