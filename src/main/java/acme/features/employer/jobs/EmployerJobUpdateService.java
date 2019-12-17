@@ -98,6 +98,8 @@ public class EmployerJobUpdateService implements AbstractUpdateService<Employer,
 		if (!errors.hasErrors("salary")) {
 			boolean isEUR = salary.getCurrency().equals("EUR");
 			errors.state(request, isEUR, "salary", "employer.job.error.not-EUR-currency");
+			boolean isPositive = salary.getAmount() != 0;
+			errors.state(request, isPositive, "salary", "employer.job.error.not-positive-salary");
 		}
 		Status status = entity.getStatus();
 		if (!errors.hasErrors("status") && status.equals(Status.PUBLISHED)) {
