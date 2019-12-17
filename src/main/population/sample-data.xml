@@ -786,7 +786,7 @@
 		<property name="status" value="DRAFT"/>
 		<property name="body" value="example body 01"/>
 		<property name="auditor" ref="auditorAuditor"/>
-		<property name="job" ref="job01"/>
+		<property name="job" ref="job02"/>
 	</bean>
 		<bean id="auditRecord02" class="acme.entities.auditRecords.AuditRecord">
 		<property name="title" value="example auditRecord02"/>
@@ -794,7 +794,7 @@
 		<property name="status" value="PUBLISHED"/>
 		<property name="body" value="example body 02"/>
 		<property name="auditor" ref="auditor2Auditor"/>
-		<property name="job" ref="job02"/>
+		<property name="job" ref="job05"/>
 	</bean>
 		<bean id="auditRecord03" class="acme.entities.auditRecords.AuditRecord">
 		<property name="title" value="example auditRecord03"/>
@@ -802,7 +802,7 @@
 		<property name="status" value="DRAFT"/>
 		<property name="body" value="example body 03"/>
 		<property name="auditor" ref="auditor2Auditor"/>
-		<property name="job" ref="job02"/>
+		<property name="job" ref="job05"/>
 	</bean>	
 		<bean id="auditRecord04" class="acme.entities.auditRecords.AuditRecord">
 		<property name="title" value="example auditRecord04"/>
@@ -810,7 +810,7 @@
 		<property name="status" value="PUBLISHED"/>
 		<property name="body" value="example body 04"/>
 		<property name="auditor" ref="auditorAuditor"/>
-		<property name="job" ref="job03"/>
+		<property name="job" ref="job05"/>
 	</bean>	
 		<bean id="auditRecord05" class="acme.entities.auditRecords.AuditRecord">
 		<property name="title" value="example auditRecord05"/>
@@ -818,7 +818,7 @@
 		<property name="status" value="DRAFT"/>
 		<property name="body" value="example body 05"/>
 		<property name="auditor" ref="auditor2Auditor"/>
-		<property name="job" ref="job03"/>
+		<property name="job" ref="job05"/>
 	</bean>		
 		<bean id="auditRecord06" class="acme.entities.auditRecords.AuditRecord">
 		<property name="title" value="example auditRecord06"/>
@@ -826,7 +826,7 @@
 		<property name="status" value="PUBLISHED"/>
 		<property name="body" value="example body 06"/>
 		<property name="auditor" ref="auditor2Auditor"/>
-		<property name="job" ref="job04"/>
+		<property name="job" ref="job05"/>
 	</bean>		
 	
 	<!-- Application -->
