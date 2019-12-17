@@ -32,4 +32,7 @@ public interface WorkerApplicationRepository extends AbstractRepository {
 	@Query("select a from Application a where a.reference = ?1")
 	Application findOneByReference(String reference);
 
+	@Query("select count(a) from Application a where a.worker.id = ?1 and job.id = ?2")
+	Integer findNumberApplicationsByWorkerIdAndJobId(int workerId, int jobId);
+
 }

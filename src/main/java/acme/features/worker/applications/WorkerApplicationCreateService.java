@@ -30,7 +30,10 @@ public class WorkerApplicationCreateService implements AbstractCreateService<Wor
 		int jobId = request.getModel().getInteger("jobId");
 		Job job = this.repository.findJobById(jobId);
 		Date nowDate = new Date(System.currentTimeMillis());
-		boolean result = job.getDeadline().after(nowDate) && job.getStatus().equals(Status.PUBLISHED);
+		Integer numberApplications = this.repository.findNumberApplicationsByWorkerIdAndJobId(request.getPrincipal().getActiveRoleId(), jobId);
+		assert numberApplications != null;
+		boolean result = job.getDeadline().after(nowDate) && job.getStatus().equals(Status.PUBLISHED) && numberApplications == 0;
+
 		return result;
 	}
 
