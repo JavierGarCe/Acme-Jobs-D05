@@ -39,12 +39,23 @@
 	</acme:form-panel>
 
 
-	<acme:form-submit code="master.menu.worker.listAuditRecords" action="/worker/audit-record/list-mine?id=${param.id}" method="get"/>
-
-	<acme:form-submit code="worker.job.form.label.descriptorMessage" action="/worker/duty/list?id=${id}" method="get"/>
+	<button type="button" class="btn btn-primary" 
+		onclick="javascript: pushReturnUrl('/worker/job/show?id=${id}'); redirect('/worker/audit-record/list-mine?id=${param.id}')">
+		<acme:message code="master.menu.worker.listAuditRecords" />
+	</button>
 	
-	<acme:form-submit code="employer.job.form.button.createApplication" action="/worker/application/create?jobId=${id}" method="get"/>
-
+	<button type="button" class="btn btn-primary" 
+		onclick="javascript: pushReturnUrl('/worker/job/show?id=${id}'); redirect('/worker/duty/list?id=${id}')">
+		<acme:message code="worker.job.form.label.descriptorMessage" />
+	</button>
+	
+	<jstl:if test="${canApply == true}">
+	<button type="button" class="btn btn-primary" 
+		onclick="javascript: pushReturnUrl('/worker/job/show?id=${id}'); redirect('/worker/application/create?jobId=${id}')">
+		<acme:message code="employer.job.form.button.createApplication" />
+	</button>
+	</jstl:if>
+	
 	<acme:form-return code="worker.job.form.button.return"/>
 
 

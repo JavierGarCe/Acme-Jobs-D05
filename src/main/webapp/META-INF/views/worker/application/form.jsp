@@ -44,7 +44,12 @@
 	<acme:form-textarea code="worker.application.form.label.skills" path="skills" />
 	<acme:form-textarea code="worker.application.form.label.qualifications" path="qualifications" />
 
-	<acme:form-submit test="${command == 'show' }" code="employer.application.form.button.job" action="/worker/job/show?id=${idJob}" method="get"/>
+	<jstl:if test="${command == 'show'}">
+	<button type="button" class="btn btn-primary" 
+		onclick="javascript: pushReturnUrl('/worker/application/show?id=${id}'); redirect('/worker/job/show?id=${idJob}')">
+		<acme:message code="employer.application.form.button.job" />
+	</button>
+	</jstl:if>
 	<acme:form-submit test="${command == 'create' }" code="employer.application.form.button.createApplication" action="/worker/application/create"/>
 
 	<acme:form-return code="worker.application.form.button.return" />

@@ -42,6 +42,12 @@ public class WorkerJobShowService implements AbstractShowService<Worker, Job> {
 		assert entity != null;
 		assert model != null;
 
+		int workerId = request.getPrincipal().getActiveRoleId();
+		int jobId = request.getModel().getInteger("id");
+		Integer numberApp = this.repository.findNumberApplicationsByJobId(jobId, workerId);
+		Boolean canApply = numberApp == 0;
+		model.setAttribute("canApply", canApply);
+
 		request.unbind(entity, model, "title", "moreInfo", "salary", "deadline", "reference", "status", "descriptor", "descriptor.description", "employer.userAccount.username");
 
 	}
